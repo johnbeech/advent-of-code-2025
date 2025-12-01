@@ -25,13 +25,14 @@ async function solveForFirstStar (input) {
   const instructions = parseInstructions(input)
   let zeroCount = 0
   let dialPosition = 50
+  console.log(`The dial starts by pointing at ${dialPosition}.`)
   for (const instruction of instructions) {
     dialPosition += (instruction.directionVal * instruction.turnCounts)
     dialPosition = dialPosition % 100
     if (dialPosition < 0) {
       dialPosition += 100
     }
-    console.log(`The dial is rotated ${instruction.direction} to point at ${dialPosition}.`)
+    console.log(`The dial is rotated ${instruction.direction}${instruction.turnCounts} to point at ${dialPosition}.`)
     if (dialPosition === 0) {
       zeroCount += 1
     }
@@ -42,8 +43,59 @@ async function solveForFirstStar (input) {
   report('Solution 1:', solution)
 }
 
+function lookupCountAsText (count) {
+  return {
+    1: 'once',
+    2: 'twice',
+    3: 'thrice'
+  }[count] || `${count} times`
+}
+
 async function solveForSecondStar (input) {
-  const solution = 'UNSOLVED'
+  const instructions = parseInstructions(input)
+  let zeroCount = 0
+  let dialPosition = 50
+  console.log(`The dial starts by pointing at ${dialPosition}.`)
+
+  for (const instruction of instructions) {
+    const { directionVal, turnCounts } = instruction
+    const start = dialPosition
+    const dir = directionVal
+    const n = turnCounts
+
+    let firstZero
+    if (dir === 1) {
+      firstZero = (100 - start) % 100
+      if (firstZero === 0) {
+        firstZero = 100
+      }
+    } else {
+      firstZero = start % 100
+      if (firstZero === 0) {
+        firstZero = 100
+      }
+    }
+
+    let dialTurnsPastZero = 0
+    if (firstZero > 0 && firstZero <= n) {
+      dialTurnsPastZero = 1 + Math.floor((n - firstZero) / 100)
+    }
+
+    zeroCount += dialTurnsPastZero
+    dialPosition = (start + dir * n) % 100
+    if (dialPosition < 0) {
+      dialPosition += 100
+    }
+
+    let additionalInfo = '.'
+    if (dialTurnsPastZero > 0 && firstZero < n) {
+      additionalInfo = `; during this rotation, it points at 0 ${lookupCountAsText(dialTurnsPastZero)}.`
+    }
+
+    console.log(`The dial is rotated ${instruction.direction}${instruction.turnCounts} to point at ${dialPosition}${additionalInfo}`)
+  }
+
+  const solution = zeroCount
   report('Solution 2:', solution)
 }
 
