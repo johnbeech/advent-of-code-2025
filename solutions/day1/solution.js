@@ -59,36 +59,34 @@ async function solveForSecondStar (input) {
 
   for (const instruction of instructions) {
     const { directionVal, turnCounts } = instruction
-    const start = dialPosition
-    const dir = directionVal
-    const n = turnCounts
+    const instructionStart = dialPosition
 
     let firstZero
-    if (dir === 1) {
-      firstZero = (100 - start) % 100
+    if (directionVal === 1) {
+      firstZero = (100 - instructionStart) % 100
       if (firstZero === 0) {
         firstZero = 100
       }
     } else {
-      firstZero = start % 100
+      firstZero = instructionStart % 100
       if (firstZero === 0) {
         firstZero = 100
       }
     }
 
     let dialTurnsPastZero = 0
-    if (firstZero > 0 && firstZero <= n) {
-      dialTurnsPastZero = 1 + Math.floor((n - firstZero) / 100)
+    if (firstZero > 0 && firstZero <= turnCounts) {
+      dialTurnsPastZero = 1 + Math.floor((turnCounts - firstZero) / 100)
     }
 
     zeroCount += dialTurnsPastZero
-    dialPosition = (start + dir * n) % 100
+    dialPosition = (instructionStart + directionVal * turnCounts) % 100
     if (dialPosition < 0) {
       dialPosition += 100
     }
 
     let additionalInfo = '.'
-    if (dialTurnsPastZero > 0 && firstZero < n) {
+    if (dialTurnsPastZero > 0 && firstZero < turnCounts) {
       additionalInfo = `; during this rotation, it points at 0 ${lookupCountAsText(dialTurnsPastZero)}.`
     }
 
