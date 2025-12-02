@@ -17,27 +17,13 @@ function parseProductRanges (input) {
   })
 }
 
-function findInvalidIds (firstId, lastId) {
+function findInvalidIdsPart1 (firstId, lastId) {
   const validIds = []
   const invalidIds = []
   const errors = []
 
   const firstIdNum = Number.parseInt(firstId, 10)
   const lastIdNum = Number.parseInt(lastId, 10)
-
-  if (Number.isNaN(firstIdNum)) {
-    errors.push(`First ID is not a number: ${firstId}`)
-  }
-  if (Number.isNaN(lastIdNum)) {
-    errors.push(`Last ID is not a number: ${lastId}`)
-  }
-  if (firstIdNum > lastIdNum) {
-    errors.push(`First ID ${firstId} is greater than Last ID ${lastId}`)
-  }
-
-  if (errors.length > 0) {
-    return { validIds, invalidIds, errors }
-  }
 
   let currentId = firstIdNum
   let sumOfInvalidIds = 0
@@ -66,15 +52,51 @@ function findInvalidIds (firstId, lastId) {
 
 async function solveForFirstStar (input) {
   const productRanges = parseProductRanges(input)
-  const analysis = productRanges.map(range => findInvalidIds(range.firstId, range.lastId))
+  const analysis = productRanges.map(range => findInvalidIdsPart1(range.firstId, range.lastId))
   const solution = analysis.reduce((acc, curr) => acc + curr.sumOfInvalidIds, 0)
 
   report('Input:', input)
   report('Solution 1:', solution)
 }
 
+function findInvalidIdsPart2 (firstId, lastId) {
+  const validIds = []
+  const invalidIds = []
+  const errors = []
+
+  const firstIdNum = Number.parseInt(firstId, 10)
+  const lastIdNum = Number.parseInt(lastId, 10)
+
+  let currentId = firstIdNum
+  let sumOfInvalidIds = 0
+  while (currentId <= lastIdNum) {
+    const repeatingPatternsRegex = /^(\d+)\1+$/
+    if (repeatingPatternsRegex.test(String(currentId))) {
+      invalidIds.push(currentId)
+      sumOfInvalidIds += currentId
+    } else {
+      validIds.push(currentId)
+    }
+    currentId = currentId + 1
+  }
+
+  return {
+    firstId,
+    lastId,
+    validIds,
+    invalidIds,
+    sumOfInvalidIds,
+    errors
+  }
+}
+
 async function solveForSecondStar (input) {
-  const solution = 'UNSOLVED'
+  const productRanges = parseProductRanges(input)
+  const analysis = productRanges.map(range => findInvalidIdsPart2(range.firstId, range.lastId))
+  const solution = analysis.reduce((acc, curr) => acc + curr.sumOfInvalidIds, 0)
+
+  report(analysis)
+
   report('Solution 2:', solution)
 }
 
