@@ -51,6 +51,52 @@ function joltBattery (batteryItem) {
   }
 }
 
+function joltBatteryx12 (batteryItem) {
+  const keepCount = 12
+  if (batteryItem.length === 0) {
+    return { batteryItem: '', line: '', joltage: 0 }
+  }
+
+  // Walk left to right along battery row
+  const n = batteryItem.length
+  let toDrop = n - keepCount
+
+  const keepers = []
+
+  for (let i = 0; i < n; i++) {
+    const current = batteryItem[i]
+
+    // Pop lower previous values while we can still drop
+    while (
+      toDrop > 0 &&
+      keepers.length > 0 &&
+      keepers[keepers.length - 1].value < current.value
+    ) {
+      keepers.pop()
+      toDrop--
+    }
+
+    keepers.push(current)
+  }
+
+  // If we have more than keepCount items; keep the first keepCount
+  const chosen = keepers.slice(0, keepCount)
+
+  // Mark chosen batteries as "on"
+  const chosenSet = new Set(chosen.map(item => item.index))
+  batteryItem.forEach(item => {
+    item.on = chosenSet.has(item.index)
+  })
+
+  const joltage = Number(chosen.map(item => item.value).join(''))
+
+  return {
+    batteryItem: batteryItem.map(item => item.value).join(''),
+    batteryDisp: batteryItem.map(item => (item.on ? item.value : '_')).join(''),
+    joltage
+  }
+}
+
 async function solveForFirstStar (input) {
   const batteryBank = parseBatteryBank(input)
   const joltages = batteryBank.map(joltBattery)
@@ -63,7 +109,12 @@ async function solveForFirstStar (input) {
 }
 
 async function solveForSecondStar (input) {
-  const solution = 'UNSOLVED'
+  const batteryBank = parseBatteryBank(input)
+  const joltages = batteryBank.map(joltBatteryx12)
+
+  console.log('Joltages x12:', joltages)
+
+  const solution = joltages.reduce((sum, item) => sum + item.joltage, 0)
   report('Solution 2:', solution)
 }
 
