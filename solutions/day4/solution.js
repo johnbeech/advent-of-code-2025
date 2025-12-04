@@ -88,7 +88,44 @@ async function solveForFirstStar (input) {
 }
 
 async function solveForSecondStar (input) {
-  const solution = 'UNSOLVED'
+  const grid = parseMap(input)
+
+  function renderItem (item) {
+    if (item.removed) {
+      return 'x'
+    }
+    return item.char
+  }
+
+  console.log('')
+  console.log('Initial state:')
+  console.log(grid.toString(renderItem))
+
+  let totalItemsRemoved = 0
+  let itemsRemoved
+  do {
+    itemsRemoved = 0
+    grid.items.forEach(item => {
+      const neighboringRolls = item.neighbors.filter(n => n.roll).length
+      if (neighboringRolls < 4 && item.roll === true) {
+        item.accessibleByForklift = true
+      }
+    })
+    grid.items.forEach(item => {
+      if (item.roll === true && item.accessibleByForklift === true) {
+        item.roll = false
+        item.removed = true
+        itemsRemoved++
+      }
+    })
+    console.log('')
+    console.log(`Remove ${itemsRemoved} roll(s) of paper:`)
+    console.log(grid.toString(renderItem))
+    totalItemsRemoved += itemsRemoved
+  } while (itemsRemoved > 0)
+
+  const solution = totalItemsRemoved
+
   report('Solution 2:', solution)
 }
 
