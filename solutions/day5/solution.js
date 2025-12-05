@@ -55,10 +55,13 @@ async function solveForSecondStar (input) {
   // Combine overlapping ranges until no overlaps remain
   let merged = true
   let currentRanges = inventory.ranges.slice()
+  let iterationCount = 0
+  let mergeCounts = 0
   while (merged) {
     merged = false
     const newRanges = []
     const usedIndices = new Set()
+    iterationCount++
     currentRanges.forEach((rangeA, rangeAIndex) => {
       if (usedIndices.has(rangeAIndex)) return
       let mergedRange = rangeA
@@ -72,6 +75,7 @@ async function solveForSecondStar (input) {
             }
             usedIndices.add(rangeBIndex)
             merged = true
+            mergeCounts++
           }
         }
       })
@@ -82,6 +86,8 @@ async function solveForSecondStar (input) {
   }
 
   console.log('Merged Ranges:', currentRanges)
+  console.log('Number of Merged Ranges:', currentRanges.length)
+  console.log('Iterations:', iterationCount, 'Merges:', mergeCounts)
 
   // Count length of merged ranges; this is the number of fresh ingredients possible
   const totalFreshCapacity = currentRanges.reduce((sum, range) => sum + (range.end - range.start + 1), 0)
