@@ -51,67 +51,51 @@ async function solveForFirstStar (input) {
   report('Solution 1:', solution)
 }
 
-function leftPadString (str, length, padChar = ' ') {
-  while (str.length < length) {
-    str = padChar + str
-  }
-  return str
-}
-
-function rightPadString (str, length, padChar = ' ') {
-  while (str.length < length) {
-    str = str + padChar
-  }
-  return str
-}
-
 function parseWorksheetCorrectly (input) {
-  // In part two we discover that the numbers are written vertically, top to bottom in each column,
-  // e.g.
-  // 1   34
-  // 42  14
-  // +   *
-  //
-  // means (2 + 14) and (44 * 31)
-  //
-  // So we need to transpose the data differently,
-  // but the operations are still applied on the column as a whole
+  const lines = input.split('\n').filter(line => line)
+  const operationLine = lines[lines.length - 1]
+  const dataLines = lines.slice(0, -1)
+  let scanIndex = 0
+  let operation = ''
+  const values = []
+  const exerciseResults = []
 
-  const lines = input.split('\n').map(line => line.trim()).filter(line => line)
-  const data = lines.slice(0, -1).map(line => line.split(/\s+/).map(Number))
-  const operations = lines[lines.length - 1].split(/\s+/)
-
-  // transpose data to get columns as a list of { values, operation }
-  const exercises = data[0].map((_, colIndex) => {
-    const rows = data.map(row => row[colIndex])
-    // Need to recreate the numbers by building a vertical slice of single digits from each line
-    // e.g. 1 and 4, becomes 14, then nothing and 2 becomes 2
-    // then the next exercise is 3 and 1 becomes 31, then 4 and 4 becomes 44
-    const operation = operations[colIndex]
-
-    // Switch pad function based on operator
-    // Multiplication columns are right aligned
-    // Addition columns are left aligned
-    const padFn = operation === '*' ? leftPadString : rightPadString
-
-    const largestVal = Math.max(...rows).toString().length
-    const values = []
-    do {
-      const index = values.length
-      const tranposedValue = Number.parseInt(rows.map(item => padFn(item.toString(), largestVal).charAt(index)).join(''), 10)
-      values.push(tranposedValue)
-    } while (values.length < largestVal)
-    return {
-      values: values.join(' '),
+  function calculateResults () {
+    // calculate total for previous exercise
+    const opFn = opMap[operation]
+    const total = values.filter(n => n !== 0).reduce(opFn, operation === '+' ? 0 : 1)
+    console.log('Total for operation', operation, 'with values', values, 'is', total)
+    exerciseResults.push({
       operation,
-      opFn: opMap[operation],
-      total: values.reduce(opMap[operation], operation === '+' ? 0 : 1)
+      values: values.join(', '),
+      total
+    })
+    values.length = 0
+  }
+
+  do {
+    const newOp = String(operationLine[scanIndex] ?? '').trim()
+    if (newOp) {
+      if (values.length > 0) {
+        calculateResults()
+      }
+      operation = newOp
+      console.log('New operation detected:', operation)
     }
-  })
+
+    const value = Number(dataLines.map(line => line[scanIndex]).join('').trim())
+    console.log('Parsed value at column', scanIndex, ':', value)
+    if (!isNaN(value)) {
+      values.push(value)
+    }
+    scanIndex++
+  } while (scanIndex < lines[0].length)
+  // calculate total for last exercise
+  calculateResults()
 
   return {
-    exercises,
-    grandTotal: exercises.reduce((sum, ex) => sum + ex.total, 0)
+    exercises: exerciseResults,
+    grandTotal: exerciseResults.reduce((sum, ex) => sum + ex.total, 0)
   }
 }
 
