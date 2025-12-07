@@ -4,7 +4,7 @@ const fromHere = position(__dirname)
 const report = (...messages) => console.log(`[${require(fromHere('../../package.json')).logName} / ${__dirname.split(path.sep).pop()}]`, ...messages)
 
 async function run () {
-  const input = (await read(fromHere('input.txt'), 'utf8')).trim()
+  const input = (await read(fromHere('test.txt'), 'utf8')).trim()
 
   await solveForFirstStar(input)
   await solveForSecondStar(input)
@@ -87,7 +87,7 @@ async function solveForFirstStar (input) {
       // Activate the splitter and spawn new beams
       cell.splitterActivated = true
       const newBeamCellL = createEmptyCell(beam.x - 1, beam.y, '🟥')
-      const newBeamCellR = createEmptyCell(beam.x + 1, beam.y, '🟩')
+      const newBeamCellR = createEmptyCell(beam.x + 1, beam.y, '🟦')
       grid.set(`${newBeamCellL.x},${newBeamCellL.y}`, newBeamCellL)
       grid.set(`${newBeamCellR.x},${newBeamCellR.y}`, newBeamCellR)
       beams.push(newBeamCellL)
