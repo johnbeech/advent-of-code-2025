@@ -53,27 +53,27 @@ function parseSparseGrid (input) {
   return { grid, tachyonSource, bounds, render }
 }
 
+function createEmptyCell (x, y, value = '.') {
+  return { x, y, value, beamTouched: false, isSplitter: false, splitterActivated: false }
+}
+
+function renderFn (cell) {
+  if (cell.isTachyonSource) return '🟨'
+  if (cell.isSplitter) return cell.splitterActivated ? '❎' : '⬜'
+  if (cell.value === '🟥' || cell.value === '🟦') return cell.value
+  if (cell.beamTouched) return '🟡'
+  if (cell.value === '.' || cell?.value === undefined) return '⬛'
+  return cell.value
+}
+
 async function solveForFirstStar (input) {
   const { grid, tachyonSource, bounds, render } = parseSparseGrid(input)
 
-  // TODO: Simulate the tachyon beam moving dowards until it hits a splitter
+  // Simulate the tachyon beam moving dowards until it hits a splitter
   // When it hits a splitter, it stops, and activates the splitter, spawning new beans either side
   // The new beams then move downwards in the same way, activating splitters as they go
   // Beams stop when they go out of bounds at the bottom of the grid
   const beams = [{ x: tachyonSource.x, y: tachyonSource.y + 1 }]
-
-  function createEmptyCell (x, y, value = '.') {
-    return { x, y, value, beamTouched: false, isSplitter: false, splitterActivated: false }
-  }
-
-  function renderFn (cell) {
-    if (cell.isTachyonSource) return '🟨'
-    if (cell.isSplitter) return cell.splitterActivated ? '❎' : '⬜'
-    if (cell.value === '🟥' || cell.value === '🟦') return cell.value
-    if (cell.beamTouched) return '🟡'
-    if (cell.value === '.' || cell?.value === undefined) return '⬛'
-    return cell.value
-  }
 
   while (beams.length > 0) {
     const beam = beams.shift()
@@ -106,12 +106,42 @@ async function solveForFirstStar (input) {
 
   await write(fromHere('output.txt'), render(renderFn))
 
-  const solution = Array.from(grid.values()).filter(cell => cell.splitterActivated).length
-  report('Solution 1:', solution)
+  const solution1 = Array.from(grid.values()).filter(cell => cell.splitterActivated).length
+  report('Solution 1:', solution1)
 }
 
 async function solveForSecondStar (input) {
-  const solution = 'UNSOLVED'
+  const { grid, tachyonSource, bounds } = parseSparseGrid(input)
+
+  // Use memoized recursion to count unique timelines
+  const memo = new Map()
+
+  function countTimelines (x, y) {
+    const key = `${x},${y}`
+
+    if (y > bounds.maxY) {
+      return 1 // One valid timeline exits here
+    }
+
+    if (memo.has(key)) {
+      return memo.get(key)
+    }
+
+    const cell = grid.get(key)
+    let count
+
+    if (cell?.isSplitter) {
+      // Sum timelines from both branches
+      count = countTimelines(x - 1, y + 1) + countTimelines(x + 1, y + 1)
+    } else {
+      count = countTimelines(x, y + 1)
+    }
+
+    memo.set(key, count)
+    return count
+  }
+
+  const solution = countTimelines(tachyonSource.x, tachyonSource.y + 1)
   report('Solution 2:', solution)
 }
 
