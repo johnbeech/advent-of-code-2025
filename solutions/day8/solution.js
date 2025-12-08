@@ -3,6 +3,14 @@ const { read, position } = require('promise-path')
 const fromHere = position(__dirname)
 const report = (...messages) => console.log(`[${require(fromHere('../../package.json')).logName} / ${__dirname.split(path.sep).pop()}]`, ...messages)
 
+async function timeSolution (label, fn) {
+  const start = process.hrtime.bigint()
+  const result = await fn()
+  const elapsedMs = Number(process.hrtime.bigint() - start) / 1e6
+  report(`${label} completed in ${elapsedMs.toFixed(3)}ms`)
+  return result
+}
+
 function parseJunctionBoxes (input) {
   const lines = input.split('\n').map(line => line.trim()).filter(n => n)
   const junctionBoxes = lines.map((line, index) => {
@@ -18,11 +26,11 @@ async function run () {
   const test = (await read(fromHere('test.txt'), 'utf8')).trim()
   const input = (await read(fromHere('input.txt'), 'utf8')).trim()
 
-  await solveForFirstStar(test, 10)
-  await solveForFirstStar(input)
+  await timeSolution('Part 1 (test)', () => solveForFirstStar(test, 10))
+  await timeSolution('Part 1 (input)', () => solveForFirstStar(input))
 
-  await solveForSecondStar(test, 10)
-  await solveForSecondStar(input)
+  await timeSolution('Part 2 (test)', () => solveForSecondStar(test, 10))
+  await timeSolution('Part 2 (input)', () => solveForSecondStar(input))
 }
 
 function mergeCircuits (junctionBoxes, boxA, boxB) {
