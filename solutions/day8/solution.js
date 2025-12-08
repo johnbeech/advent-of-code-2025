@@ -33,24 +33,45 @@ async function run () {
   await timeSolution('Part 2 (input)', () => solveForSecondStar(input))
 }
 
-function mergeCircuits (junctionBoxes, boxA, boxB) {
-  if (boxA.circuit === null && boxB.circuit === null) {
-    const newCircuitId = `circuit-${boxA.index}-${boxB.index}`
-    boxA.circuit = newCircuitId
-    boxB.circuit = newCircuitId
-  } else if (boxA.circuit !== null && boxB.circuit === null) {
-    boxB.circuit = boxA.circuit
-  } else if (boxA.circuit === null && boxB.circuit !== null) {
-    boxA.circuit = boxB.circuit
-  } else {
-    const oldCircuitId = boxB.circuit
-    const newCircuitId = boxA.circuit
-    junctionBoxes.forEach(box => {
-      if (box.circuit === oldCircuitId) {
-        box.circuit = newCircuitId
-      }
-    })
+function mergeCircuits (boxA, boxB) {
+  const circuitA = boxA.circuit
+  const circuitB = boxB.circuit
+
+  if (circuitA === null && circuitB === null) {
+    const newCircuit = new Set([boxA, boxB])
+    boxA.circuit = newCircuit
+    boxB.circuit = newCircuit
+    return
   }
+
+  if (circuitA !== null && circuitB === null) {
+    circuitA.add(boxB)
+    boxB.circuit = circuitA
+    return
+  }
+
+  if (circuitA === null && circuitB !== null) {
+    circuitB.add(boxA)
+    boxA.circuit = circuitB
+    return
+  }
+
+  if (circuitA === circuitB) {
+    return
+  }
+
+  const [targetCircuit, sourceCircuit] = circuitA.size >= circuitB.size ? [circuitA, circuitB] : [circuitB, circuitA]
+  sourceCircuit.forEach(box => {
+    targetCircuit.add(box)
+    box.circuit = targetCircuit
+  })
+}
+
+function squaredDistance (boxA, boxB) {
+  const dx = boxA.x - boxB.x
+  const dy = boxA.y - boxB.y
+  const dz = boxA.z - boxB.z
+  return dx * dx + dy * dy + dz * dz
 }
 
 function findAllPairs (junctionBoxes) {
@@ -59,11 +80,7 @@ function findAllPairs (junctionBoxes) {
   junctionBoxes.forEach((boxA, i) => {
     junctionBoxes.forEach((boxB, j) => {
       if (j <= i) return
-      const distance = Math.sqrt(
-        Math.pow(boxA.x - boxB.x, 2) +
-        Math.pow(boxA.y - boxB.y, 2) +
-        Math.pow(boxA.z - boxB.z, 2)
-      )
+      const distance = squaredDistance(boxA, boxB)
       allPairs.push({ boxA, boxB, distance, indexA: i, indexB: j })
     })
   })
@@ -99,7 +116,7 @@ function formCircuitConnections (pairs, junctionBoxes, maxConnections) {
     boxA.connections.push(boxB.index)
     boxB.connections.push(boxA.index)
     connections.push([boxA.index, boxB.index])
-    mergeCircuits(junctionBoxes, boxA, boxB)
+    mergeCircuits(boxA, boxB)
     // console.log(`Attempt ${attemptCount}: Connected Box ${boxA.index} <-> Box ${boxB.index} (distance: ${distance.toFixed(2)}) [Connection #${connections.length}]`)
   }
   return connections
@@ -128,15 +145,15 @@ async function solveForFirstStar (input, connectionCount = 1000) {
   const circuitSizes = []
 
   // Add connected circuit sizes
-  connectedCircuits.forEach(circuitId => {
-    const size = junctionBoxes.filter(box => box.circuit === circuitId).length
-    circuitSizes.push({ circuitId, size })
+  connectedCircuits.forEach(circuitSet => {
+    const members = Array.from(circuitSet).map(box => box.index).sort((a, b) => a - b)
+    circuitSizes.push({ circuitMembers: members, size: circuitSet.size })
   })
 
   // Add unconnected boxes (each as size 1)
   junctionBoxes.forEach(box => {
     if (box.circuit === null) {
-      circuitSizes.push({ circuitId: `unconnected-${box.index}`, size: 1 })
+      circuitSizes.push({ circuitMembers: [box.index], size: 1 })
     }
   })
 
@@ -178,7 +195,7 @@ async function solveForSecondStar (input, connectionCount = 1000) {
     // Connect them
     boxA.connections.push(boxB.index)
     boxB.connections.push(boxA.index)
-    mergeCircuits(junctionBoxes, boxA, boxB)
+    mergeCircuits(boxA, boxB)
     currentPair = { boxA, boxB }
 
     // Check if all boxes are now in the same circuit
