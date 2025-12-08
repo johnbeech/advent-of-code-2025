@@ -20,6 +20,8 @@ async function run () {
 
   await solveForFirstStar(test, 10)
   await solveForFirstStar(input)
+
+  await solveForSecondStar(test, 10)
   await solveForSecondStar(input)
 }
 
@@ -68,18 +70,18 @@ function formCircuitConnections (pairs, junctionBoxes, maxConnections) {
   for (const pair of pairs) {
     if (attemptCount >= maxConnections) break
 
-    const { boxA, boxB, distance } = pair
+    const { boxA, boxB } = pair
     attemptCount++
 
     // Check if already directly connected
     if (boxA.connections.includes(boxB.index)) {
-      console.log(`Attempt ${attemptCount}: Already connected Box ${boxA.index} <-> Box ${boxB.index} (distance: ${distance.toFixed(2)})`)
+      // console.log(`Attempt ${attemptCount}: Already connected Box ${boxA.index} <-> Box ${boxB.index} (distance: ${distance.toFixed(2)})`)
       continue
     }
 
     // Check if in same circuit
     if (boxA.circuit !== null && boxA.circuit === boxB.circuit) {
-      console.log(`Attempt ${attemptCount}: Skipping Box ${boxA.index} <-> Box ${boxB.index} - same circuit (distance: ${distance.toFixed(2)})`)
+      // console.log(`Attempt ${attemptCount}: Skipping Box ${boxA.index} <-> Box ${boxB.index} - same circuit (distance: ${distance.toFixed(2)})`)
       boxA.connections.push(boxB.index)
       boxB.connections.push(boxA.index)
       continue
@@ -90,7 +92,7 @@ function formCircuitConnections (pairs, junctionBoxes, maxConnections) {
     boxB.connections.push(boxA.index)
     connections.push([boxA.index, boxB.index])
     mergeCircuits(junctionBoxes, boxA, boxB)
-    console.log(`Attempt ${attemptCount}: Connected Box ${boxA.index} <-> Box ${boxB.index} (distance: ${distance.toFixed(2)}) [Connection #${connections.length}]`)
+    // console.log(`Attempt ${attemptCount}: Connected Box ${boxA.index} <-> Box ${boxB.index} (distance: ${distance.toFixed(2)}) [Connection #${connections.length}]`)
   }
   return connections
 }
@@ -142,8 +144,53 @@ async function solveForFirstStar (input, connectionCount = 1000) {
   report('Solution 1:', solution, 'for', connectionCount, 'connections')
 }
 
-async function solveForSecondStar (input) {
-  const solution = 'UNSOLVED'
+async function solveForSecondStar (input, connectionCount = 1000) {
+  const junctionBoxes = parseJunctionBoxes(input)
+
+  const allPairs = findAllPairs(junctionBoxes)
+  formCircuitConnections(allPairs, junctionBoxes, connectionCount)
+
+  let lastConnectedPair = null
+  let currentPair = null
+
+  // Continue connecting until all boxes are in the same circuit
+  for (const pair of allPairs) {
+    const { boxA, boxB } = pair
+
+    // Skip if already directly connected
+    if (boxA.connections.includes(boxB.index)) {
+      continue
+    }
+
+    // Skip if already in same circuit
+    if (boxA.circuit !== null && boxA.circuit === boxB.circuit) {
+      continue
+    }
+
+    // Connect them
+    boxA.connections.push(boxB.index)
+    boxB.connections.push(boxA.index)
+    mergeCircuits(junctionBoxes, boxA, boxB)
+    currentPair = { boxA, boxB }
+
+    // Check if all boxes are now in the same circuit
+    const circuits = new Set(
+      junctionBoxes
+        .map(box => box.circuit)
+        .filter(circuit => circuit !== null)
+    )
+
+    const unconnectedCount = junctionBoxes.filter(box => box.circuit === null).length
+
+    // All boxes must be connected AND in the same circuit
+    if (circuits.size === 1 && unconnectedCount === 0) {
+      lastConnectedPair = currentPair
+      break
+    }
+  }
+
+  const solution = lastConnectedPair.boxA.x * lastConnectedPair.boxB.x
+  report('Last Connected Pair:', `Box ${lastConnectedPair.boxA.index} (${lastConnectedPair.boxA.x},${lastConnectedPair.boxA.y},${lastConnectedPair.boxA.z}) <-> Box ${lastConnectedPair.boxB.index} (${lastConnectedPair.boxB.x},${lastConnectedPair.boxB.y},${lastConnectedPair.boxB.z})`)
   report('Solution 2:', solution)
 }
 
