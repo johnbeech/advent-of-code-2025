@@ -1,7 +1,10 @@
 const path = require('path')
 const { read, write, position } = require('promise-path')
+const { PNG } = require('pngjs')
 const fromHere = position(__dirname)
 const report = (...messages) => console.log(`[${require(fromHere('../../package.json')).logName} / ${__dirname.split(path.sep).pop()}]`, ...messages)
+
+const DEFAULT_VIEWPORT = { width: 2048, height: 2048, padding: 2 }
 
 async function timeSolution (label, fn) {
   const start = process.hrtime.bigint()
@@ -11,14 +14,23 @@ async function timeSolution (label, fn) {
   return result
 }
 
+function buildViewportAround (rectangle) {
+  return {
+    left: rectangle.left - Math.floor(DEFAULT_VIEWPORT.width / 4),
+    top: rectangle.top - Math.floor(DEFAULT_VIEWPORT.height / 4),
+    width: DEFAULT_VIEWPORT.width,
+    height: DEFAULT_VIEWPORT.height,
+    padding: DEFAULT_VIEWPORT.padding
+  }
+}
 async function run () {
   const test = (await read(fromHere('test.txt'), 'utf8')).trim()
   const input = (await read(fromHere('input.txt'), 'utf8')).trim()
 
-  await timeSolution('Part 1 (Test)', () => solveForFirstStar(test, true))
-  await timeSolution('Part 1', () => solveForFirstStar(input, false))
-  await timeSolution('Part 2 (Test)', () => solveForSecondStar(test, { produceOutput: true, outputFile: 'output-p2.txt' }))
-  await timeSolution('Part 2', () => solveForSecondStar(input))
+  await timeSolution('Part 1 (Test)', () => solveForFirstStar(test, { outputBase: 'output-p1-test' }))
+  await timeSolution('Part 1', () => solveForFirstStar(input, { outputBase: 'output-p1' }))
+  await timeSolution('Part 2 (Test)', () => solveForSecondStar(test, { outputBase: 'output-p2-test' }))
+  await timeSolution('Part 2', () => solveForSecondStar(input, { outputBase: 'output-p2' }))
 }
 
 function parseCoordinates (input) {
@@ -197,7 +209,134 @@ function renderOutput (coordinates, squares, viewport = { left: 0, top: 0, width
   return output.join('\n')
 }
 
-async function solveForFirstStar (input, produceOutput = false) {
+function compressGeometry (coordinates, squares = [], polygon = null) {
+  const xs = new Set()
+  const ys = new Set()
+
+  coordinates.forEach(({ x, y }) => {
+    xs.add(x)
+    ys.add(y)
+  })
+  squares.forEach(rect => {
+    xs.add(rect.left)
+    xs.add(rect.right)
+    ys.add(rect.top)
+    ys.add(rect.bottom)
+  })
+  if (polygon) {
+    polygon.forEach(({ x, y }) => {
+      xs.add(x)
+      ys.add(y)
+    })
+  }
+
+  const sortedXs = [...xs].sort((a, b) => a - b)
+  const sortedYs = [...ys].sort((a, b) => a - b)
+  const xMap = new Map(sortedXs.map((value, index) => [value, index]))
+  const yMap = new Map(sortedYs.map((value, index) => [value, index]))
+
+  const compressPoint = ({ x, y }) => ({ x: xMap.get(x), y: yMap.get(y) })
+
+  return {
+    coordinates: coordinates.map(compressPoint),
+    squares: squares.map(rect => ({
+      left: xMap.get(rect.left),
+      right: xMap.get(rect.right),
+      top: yMap.get(rect.top),
+      bottom: yMap.get(rect.bottom)
+    })),
+    polygon: polygon ? polygon.map(compressPoint) : null,
+    width: sortedXs.length,
+    height: sortedYs.length
+  }
+}
+
+function buildSymbolicRepresentation (coordinates, squares = [], polygon = null, padding = 1) {
+  const {
+    coordinates: compressedCoordinates,
+    squares: compressedSquares,
+    polygon: compressedPolygon,
+    width,
+    height
+  } = compressGeometry(coordinates, squares, polygon)
+
+  const viewport = {
+    left: 0,
+    top: 0,
+    width,
+    height,
+    padding
+  }
+
+  const ascii = renderOutput(compressedCoordinates, compressedSquares, viewport, compressedPolygon)
+  return { ascii }
+}
+
+const COLOR_MAP = {
+  '🟥': [220, 20, 60, 255],
+  '🟩': [34, 139, 34, 255],
+  '🟦': [65, 105, 225, 255],
+  '⬛': [8, 8, 12, 255]
+}
+
+function createPngBufferFromAscii (ascii, scale = 1) {
+  const lines = ascii.split('\n').filter(line => line.length > 0)
+  if (lines.length === 0) {
+    return null
+  }
+  const width = lines[0].length
+  const height = lines.length
+  const png = new PNG({ width: width * scale, height: height * scale })
+
+  const lineArrays = lines.map(line => Array.from(line))
+
+  for (let y = 0; y < png.height; y++) {
+    const srcY = Math.floor(y / scale)
+    const row = lineArrays[srcY] || []
+    for (let x = 0; x < png.width; x++) {
+      const srcX = Math.floor(x / scale)
+      const ch = row[srcX] || '⬛'
+      const [r, g, b, a] = COLOR_MAP[ch] || COLOR_MAP['⬛']
+      const idx = (png.width * y + x) << 2
+      png.data[idx] = r
+      png.data[idx + 1] = g
+      png.data[idx + 2] = b
+      png.data[idx + 3] = a
+    }
+  }
+
+  return PNG.sync.write(png)
+}
+
+async function generateOutputs (baseName, coordinates, squares = [], polygon = null, options = {}) {
+  const { viewport = null, scale = 20 } = options
+
+  const defaultViewport = viewport || {
+    left: 0,
+    top: 0,
+    width: DEFAULT_VIEWPORT.width,
+    height: DEFAULT_VIEWPORT.height,
+    padding: DEFAULT_VIEWPORT.padding
+  }
+  const asciiViewport = renderOutput(coordinates, squares, defaultViewport, polygon)
+  await write(fromHere(`${baseName}.txt`), asciiViewport, 'utf8')
+  const viewportPng = createPngBufferFromAscii(asciiViewport, scale)
+  if (viewportPng) {
+    await write(fromHere(`${baseName}.png`), viewportPng)
+  }
+
+  const { ascii: compressedAscii } = buildSymbolicRepresentation(coordinates, squares, polygon)
+  if (compressedAscii) {
+    await write(fromHere(`${baseName}-compressed.txt`), compressedAscii, 'utf8')
+    const compressedPng = createPngBufferFromAscii(compressedAscii, scale)
+    if (compressedPng) {
+      await write(fromHere(`${baseName}-compressed.png`), compressedPng)
+    }
+  }
+}
+
+async function solveForFirstStar (input, options = {}) {
+  const { outputBase = null } = options
   const coordinates = parseCoordinates(input)
   const possibleRectangles = []
 
@@ -220,20 +359,9 @@ async function solveForFirstStar (input, produceOutput = false) {
     return rect.area > maxRect.area ? rect : maxRect
   }, { area: 0 })
 
-  if (produceOutput === true) {
-    console.log('Possible rectangles:', possibleRectangles)
-
-    const viewport = {
-      left: largestRectangle.left,
-      top: largestRectangle.top,
-      width: 200,
-      height: 100,
-      padding: 2
-    }
-
-    const outputGrid = renderOutput(coordinates, [largestRectangle], viewport)
-    console.log(outputGrid)
-    await write(fromHere('output.txt'), outputGrid)
+  if (outputBase) {
+    const viewport = buildViewportAround(largestRectangle)
+    await generateOutputs(outputBase, coordinates, [largestRectangle], null, { viewport, scale: 1 })
   }
 
   report('Found', possibleRectangles.length, 'possible rectangles based on', coordinates.length, 'coordinates')
@@ -287,7 +415,7 @@ function findLargestRectangleWithinPolygon (coordinates, polygon, verticalEdges,
 }
 
 async function solveForSecondStar (input, options = {}) {
-  const { produceOutput = false, outputFile = 'output-p2.txt' } = options
+  const { outputBase = null } = options
   const coordinates = parseCoordinates(input)
   const polygon = coordinates
   const { vertical, horizontal } = buildOrthogonalEdges(coordinates)
@@ -295,17 +423,9 @@ async function solveForSecondStar (input, options = {}) {
 
   const largestRectangle = findLargestRectangleWithinPolygon(coordinates, polygon, vertical, horizontal, insideCache)
 
-  if (produceOutput) {
-    const viewport = {
-      left: largestRectangle.left,
-      top: largestRectangle.top,
-      width: 200,
-      height: 100,
-      padding: 2
-    }
-    const outputGrid = renderOutput(coordinates, [largestRectangle], viewport, polygon)
-    console.log(outputGrid)
-    await write(fromHere(outputFile), outputGrid)
+  if (outputBase) {
+    const viewport = buildViewportAround(largestRectangle)
+    await generateOutputs(outputBase, coordinates, [largestRectangle], polygon, { viewport, scale: 1 })
   }
 
   report('Largest rectangle (red/green constraint):', largestRectangle)

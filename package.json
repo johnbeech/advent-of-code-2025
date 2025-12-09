@@ -14,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
+    "pngjs": "^7.0.0",
     "pre-push": "*",
     "promise-path": "*",
     "standard": "*",
