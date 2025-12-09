@@ -15,8 +15,8 @@ async function run () {
   const test = (await read(fromHere('test.txt'), 'utf8')).trim()
   const input = (await read(fromHere('input.txt'), 'utf8')).trim()
 
-  await timeSolution('Part 1 (Test)', () => solveForFirstStar(test, true))
-  await timeSolution('Part 1', () => solveForFirstStar(input))
+  await timeSolution('Part 1 (Test)', () => solveForFirstStar(test, false))
+  await timeSolution('Part 1', () => solveForFirstStar(input, true))
   await timeSolution('Part 2', () => solveForSecondStar(input))
 }
 
@@ -26,39 +26,36 @@ function parseCoordinates (input) {
     return { x, y }
   })
 }
+function renderOutput (coordinates, squares, viewport = { left: 0, top: 0, width: 100, height: 100, padding: 0 }) {
+  const { left, top, width, height, padding = 0 } = viewport
 
-function renderOutput (coordinates, squares, padding = 1) {
-  const output = []
-  const xs = coordinates.map(c => c.x)
-  const ys = coordinates.map(c => c.y)
-  const minX = Math.min(...xs) - padding
-  const maxX = Math.max(...xs) + padding
-  const minY = Math.min(...ys) - padding
-  const maxY = Math.max(...ys) + padding
-
-  for (let y = minY; y <= maxY; y++) {
-    let line = ''
-    for (let x = minX; x <= maxX; x++) {
-      line += '.'
-    }
-    output.push(line)
-  }
-
-  // Mark square areas using O symbols
-  squares.forEach((square, index) => {
-    for (let y = square.top; y <= square.bottom; y++) {
-      for (let x = square.left; x <= square.right; x++) {
-        const line = output[y - minY]
-        output[y - minY] = line.substring(0, x - minX) + 'O' + line.substring(x - minX + 1)
+  // Precompute sets for fast lookup, but only for visible viewport
+  const coordSet = new Set(coordinates.map(c => `${c.x},${c.y}`))
+  const squareSet = new Set()
+  squares.forEach(square => {
+    for (let y = Math.max(square.top, top - padding); y <= Math.min(square.bottom, top + height + padding - 1); y++) {
+      if (y < top - padding || y >= top + height + padding) continue
+      for (let x = Math.max(square.left, left - padding); x <= Math.min(square.right, left + width + padding - 1); x++) {
+        if (x < left - padding || x >= left + width + padding) continue
+        squareSet.add(`${x},${y}`)
       }
     }
   })
 
-  // Mark the coordinates using # symbols
-  coordinates.forEach((coord, index) => {
-    const line = output[coord.y - minY]
-    output[coord.y - minY] = line.substring(0, coord.x - minX) + '#' + line.substring(coord.x - minX + 1)
-  })
+  function renderAt (x, y) {
+    if (coordSet.has(`${x},${y}`)) return '#'
+    if (squareSet.has(`${x},${y}`)) return 'O'
+    return '.'
+  }
+
+  const output = []
+  for (let y = top - padding; y < top + height + padding; y++) {
+    let line = ''
+    for (let x = left - padding; x < left + width + padding; x++) {
+      line += renderAt(x, y)
+    }
+    output.push(line)
+  }
 
   return output.join('\n')
 }
@@ -89,7 +86,15 @@ async function solveForFirstStar (input, produceOutput = false) {
   if (produceOutput === true) {
     console.log('Possible rectangles:', possibleRectangles)
 
-    const outputGrid = renderOutput(coordinates, [largestRectangle])
+    const viewport = {
+      left: largestRectangle.left,
+      top: largestRectangle.top,
+      width: 90,
+      height: 90,
+      padding: 5
+    }
+
+    const outputGrid = renderOutput(coordinates, [largestRectangle], viewport)
     console.log(outputGrid)
     await write(fromHere('output.txt'), outputGrid)
   }
