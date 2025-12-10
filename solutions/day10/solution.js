@@ -20,11 +20,14 @@ const LIGHT_STATES = {
   ON
 }
 
+function renderLightDiagram (lightDiagram) {
+  return `[${lightDiagram.map(light => (light.targetState === LIGHT_STATES.ON ? '🟨' : '⬛')).join('')}]`
+}
+
 function parseMachineInstructions (input) {
   const lines = input.split('\n').map(line => line.trim()).filter(line => line.length > 0)
 
   function parseLine (line) {
-    const originalLine = line
     const lightDiagram = []
     const wiringSchematics = []
     const joltageRequirements = []
@@ -82,7 +85,6 @@ function parseMachineInstructions (input) {
 
     // Each line represents a machine configuration
     return {
-      originalLine,
       lightDiagram,
       wiringSchematics,
       joltageRequirements
@@ -210,7 +212,7 @@ async function solveForFirstStar (input, outputFilename) {
       machine.joltageRequirements
     )
     report('Machine result:', result)
-    outputLines.push(machine.originalLine)
+    outputLines.push(renderLightDiagram(machine.lightDiagram))
     if (result.bestSolution == null) {
       outputLines.push('No solution found.')
     } else if (result.combinations.length === 0) {
