@@ -1,6 +1,7 @@
 const path = require('path')
 const { read, position } = require('promise-path')
 const { writeFile } = require('fs/promises')
+const { solveIntegerProgram } = require('./lpsolver')
 const fromHere = position(__dirname)
 const report = (...messages) => console.log(`[${require(fromHere('../../package.json')).logName} / ${__dirname.split(path.sep).pop()}]`, ...messages)
 
@@ -21,7 +22,11 @@ const LIGHT_STATES = {
 }
 
 function renderLightDiagram (lightDiagram) {
-  return `[${lightDiagram.map(light => (light.targetState === LIGHT_STATES.ON ? '🟨' : '⬛')).join('')}]`
+  if (!lightDiagram || lightDiagram.length === 0) {
+    return '[]'
+  }
+  const characters = lightDiagram.map(light => (light.targetState === LIGHT_STATES.ON ? '🟨' : '⬛'))
+  return `[${characters.join('')}]`
 }
 
 function parseMachineInstructions (input) {
@@ -236,9 +241,128 @@ async function solveForFirstStar (input, outputFilename) {
   report('Solution 1:', solution)
 }
 
+function solveMachineForJoltage (machine) {
+  const targets = machine.joltageRequirements
+  if (!targets || targets.length === 0) {
+    return { bestSolution: 0, pressesPerButton: [], combination: [] }
+  }
+
+  const buttons = machine.wiringSchematics
+    .map(schematic => {
+      const effect = Array(targets.length).fill(0)
+      schematic.wiredButtons.forEach(button => {
+        const idx = button.lightIndex
+        if (idx < 0 || idx >= targets.length) {
+          throw new Error(`Invalid joltage index ${idx} for machine`)
+        }
+        effect[idx] = 1
+      })
+      return {
+        label: schematic.label || `(${schematic.wiredButtons.map(button => button.lightIndex).join(',')})`,
+        effect,
+        coverage: schematic.wiredButtons.length
+      }
+    })
+    .filter(button => button.coverage > 0)
+
+  if (buttons.length === 0) {
+    return { bestSolution: null, pressesPerButton: null, combination: [], reason: 'No buttons available' }
+  }
+
+  const coverage = Array(targets.length).fill(0)
+  buttons.forEach(button => {
+    button.effect.forEach((value, idx) => {
+      if (value > 0) {
+        coverage[idx]++
+      }
+    })
+  })
+
+  for (let i = 0; i < targets.length; i++) {
+    if (targets[i] > 0 && coverage[i] === 0) {
+      return {
+        bestSolution: null,
+        pressesPerButton: null,
+        combination: [],
+        reason: `Counter ${i} cannot be increased`
+      }
+    }
+  }
+
+  const numButtons = buttons.length
+  const constraints = []
+
+  targets.forEach((targetValue, counterIdx) => {
+    const coeffs = buttons.map(button => button.effect[counterIdx] || 0)
+    constraints.push({
+      relation: '=',
+      rhs: targetValue,
+      coeffs
+    })
+  })
+
+  for (let i = 0; i < numButtons; i++) {
+    const coeffs = Array(numButtons).fill(0)
+    coeffs[i] = 1
+    constraints.push({
+      relation: '>=',
+      rhs: 0,
+      coeffs
+    })
+  }
+
+  const model = {
+    numVars: numButtons,
+    objective: {
+      sense: 'min',
+      coeffs: Array(numButtons).fill(1)
+    },
+    constraints
+  }
+
+  const solution = solveIntegerProgram(model)
+  if (!solution.feasible) {
+    return {
+      bestSolution: null,
+      pressesPerButton: null,
+      combination: [],
+      reason: 'No valid combination found'
+    }
+  }
+
+  const pressesPerButton = solution.solution.map(value => Math.round(value))
+  const combination = []
+  pressesPerButton.forEach((count, idx) => {
+    for (let i = 0; i < count; i++) {
+      combination.push(buttons[idx].label)
+    }
+  })
+  const totalPresses = pressesPerButton.reduce((sum, value) => sum + value, 0)
+
+  return {
+    bestSolution: totalPresses,
+    pressesPerButton,
+    combination
+  }
+}
+
 async function solveForSecondStar (input) {
-  const solution = 'UNSOLVED'
-  report('Solution 2:', solution)
+  const machines = parseMachineInstructions(input)
+  const total = machines.reduce((sum, machine) => {
+    const result = solveMachineForJoltage(machine)
+    report('Joltage result:', {
+      lightDiagram: renderLightDiagram(machine.lightDiagram),
+      bestSolution: result.bestSolution,
+      sampleCombination: result.combination.slice(0, 5),
+      pressesPerButton: result.pressesPerButton
+    })
+    if (result.bestSolution == null) {
+      throw new Error(`Unable to configure machine joltage for diagram ${renderLightDiagram(machine.lightDiagram)}`)
+    }
+    return sum + result.bestSolution
+  }, 0)
+
+  report('Solution 2:', total)
 }
 
 run()
