@@ -213,7 +213,7 @@ function extractSolution (tableau, basis, numVars) {
 function solveLinearProgram (model) {
   const normalized = normalizeModel(model)
   const prepared = buildInitialTableau(normalized)
-  let { tableau, basis, totalVars, rhsColumn, numOriginalVars, artificialStart, artificialCount, phaseOneNeeded } = prepared
+  let { tableau, basis, totalVars, rhsColumn, numOriginalVars, artificialStart, phaseOneNeeded } = prepared
 
   const rows = tableau.length
 
