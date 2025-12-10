@@ -2,6 +2,9 @@ const assert = require('node:assert/strict')
 const { solveIntegerProgram } = require('./lpsolver')
 
 const suites = []
+const GREEN = '\x1b[32m'
+const RED = '\x1b[31m'
+const RESET = '\x1b[0m'
 let totalTests = 0
 let passedTests = 0
 let failedTests = 0
@@ -30,13 +33,13 @@ function run (test) {
       totalDurationNs += elapsed
       const durationMs = Number(elapsed) / 1e6
       passedTests++
-      console.log(`  ✓ it should ${title} (${durationMs.toFixed(3)}ms)`)
+      console.log(`${GREEN}  ✓ it should ${title} (${durationMs.toFixed(3)}ms)${RESET}`)
     } catch (err) {
       const elapsed = process.hrtime.bigint() - start
       totalDurationNs += elapsed
       const durationMs = Number(elapsed) / 1e6
       failedTests++
-      console.error(`  ✗ it should ${title} (${durationMs.toFixed(3)}ms)`)
+      console.error(`${RED}  ✗ it should ${title} (${durationMs.toFixed(3)}ms)${RESET}`)
       throw err
     }
   })
@@ -125,8 +128,9 @@ function runTests () {
   console.log('')
   console.log('Summary:')
   console.log(`  Total tests: ${totalTests}`)
-  console.log(`  Passed: ${passedTests}`)
-  console.log(`  Failed: ${failedTests}`)
+  const failColor = failedTests === 0 ? GREEN : RED
+  console.log(`  Passed: ${GREEN}${passedTests}${RESET}`)
+  console.log(`  Failed: ${failColor}${failedTests}${RESET}`)
   console.log(`  Total time: ${totalMs.toFixed(3)}ms`)
 }
 
