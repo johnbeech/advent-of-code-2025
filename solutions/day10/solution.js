@@ -3,7 +3,8 @@ const { read, position } = require('promise-path')
 const { writeFile } = require('fs/promises')
 const { solveIntegerProgram } = require('./lpsolver')
 const fromHere = position(__dirname)
-const report = (...messages) => console.log(`[${require(fromHere('../../package.json')).logName} / ${__dirname.split(path.sep).pop()}]`, ...messages)
+const logPrefix = `[${require(fromHere('../../package.json')).logName} / ${__dirname.split(path.sep).pop()}]`
+const report = (...messages) => console.log(logPrefix, ...messages)
 
 async function timeSolution (label, fn) {
   const start = process.hrtime.bigint()
@@ -26,7 +27,7 @@ function renderLightDiagram (lightDiagram) {
     return '[]'
   }
   const characters = lightDiagram.map(light => (light.targetState === LIGHT_STATES.ON ? '🟨' : '⬛'))
-  return `[${characters.join('')}]`
+  return `[ ${characters.join(' ')} ]`
 }
 
 function parseMachineInstructions (input) {
@@ -105,7 +106,8 @@ async function run () {
 
   await timeSolution('Part 1 (test)', () => solveForFirstStar(test, 'output-p1-test.txt'))
   await timeSolution('Part 1', () => solveForFirstStar(input, 'output-p1-input.txt'))
-  await timeSolution('Part 2', () => solveForSecondStar(input))
+  await timeSolution('Part 2 (test)', () => solveForSecondStar(test, 'output-p2-test.txt'))
+  await timeSolution('Part 2', () => solveForSecondStar(input, 'output-p2-input.txt'))
 }
 
 function solveMachineInFewestButtonPresses (lightDiagram, wiringSchematics, joltageRequirements) {
@@ -346,21 +348,44 @@ function solveMachineForJoltage (machine) {
   }
 }
 
-async function solveForSecondStar (input) {
+async function solveForSecondStar (input, outputFilename) {
   const machines = parseMachineInstructions(input)
-  const total = machines.reduce((sum, machine) => {
+  let builder = ''
+  const total = machines.reduce((sum, machine, index) => {
     const result = solveMachineForJoltage(machine)
-    report('Joltage result:', {
-      lightDiagram: renderLightDiagram(machine.lightDiagram),
-      bestSolution: result.bestSolution,
-      sampleCombination: result.combination.slice(0, 5),
-      pressesPerButton: result.pressesPerButton
-    })
+    const sampleSize = 5
+    const sampleCombination = result.combination.slice(0, sampleSize)
+    const hiddenCount = Math.max(0, result.combination.length - sampleCombination.length)
+    const sampleDescription = hiddenCount > 0
+      ? [...sampleCombination, '...', `(${hiddenCount} hidden)`]
+      : sampleCombination
     if (result.bestSolution == null) {
       throw new Error(`Unable to configure machine joltage for diagram ${renderLightDiagram(machine.lightDiagram)}`)
     }
+    const pressesPerButtonStr = result.pressesPerButton ? result.pressesPerButton.join(', ') : ''
+    const summaryLines = [
+      `Machine ${index}:`,
+      `  Diagram: ${renderLightDiagram(machine.lightDiagram)}`,
+      `  Best presses: ${result.bestSolution}`,
+      `  Presses per button: [${pressesPerButtonStr}]`,
+      `  Sample combo: [${sampleDescription.join(', ')}]`
+    ]
+    const block = summaryLines.join('\n')
+    console.log(block)
+    console.log()
+    builder += block + '\n\n'
     return sum + result.bestSolution
   }, 0)
+
+  const totalLine = `Solution 2: ${total}`
+  report(totalLine)
+  builder += `${totalLine}\n`
+
+  if (outputFilename) {
+    const outputPath = fromHere(outputFilename)
+    await writeFile(outputPath, builder, 'utf8')
+    report(`Wrote output to ${outputPath}`)
+  }
 
   report('Solution 2:', total)
 }

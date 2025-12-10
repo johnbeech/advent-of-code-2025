@@ -1,0 +1,19 @@
+Machine 0:
+  Diagram: [ ⬛ 🟨 🟨 ⬛ ]
+  Best presses: 10
+  Presses per button: [1, 5, 0, 1, 3, 0]
+  Sample combo: [(3), (1,3), (1,3), (1,3), (1,3), ..., (5 hidden)]
+
+Machine 1:
+  Diagram: [ ⬛ ⬛ ⬛ 🟨 ⬛ ]
+  Best presses: 12
+  Presses per button: [2, 5, 0, 5, 0]
+  Sample combo: [(0,2,3,4), (0,2,3,4), (2,3), (2,3), (2,3), ..., (7 hidden)]
+
+Machine 2:
+  Diagram: [ ⬛ 🟨 🟨 🟨 ⬛ 🟨 ]
+  Best presses: 11
+  Presses per button: [5, 0, 5, 1]
+  Sample combo: [(0,1,2,3,4), (0,1,2,3,4), (0,1,2,3,4), (0,1,2,3,4), (0,1,2,3,4), ..., (6 hidden)]
+
+Solution 2: 33

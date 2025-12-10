@@ -1,0 +1,997 @@
+Machine 0:
+  Diagram: [ ⬛ 🟨 ⬛ 🟨 🟨 🟨 🟨 ]
+  Best presses: 96
+  Presses per button: [0, 21, 15, 17, 6, 23, 0, 0, 14]
+  Sample combo: [(1,3,4,5), (1,3,4,5), (1,3,4,5), (1,3,4,5), (1,3,4,5), ..., (91 hidden)]
+
+Machine 1:
+  Diagram: [ 🟨 ⬛ 🟨 ⬛ 🟨 ⬛ 🟨 🟨 ⬛ ]
+  Best presses: 86
+  Presses per button: [12, 15, 13, 2, 12, 15, 17]
+  Sample combo: [(0,1,4,7), (0,1,4,7), (0,1,4,7), (0,1,4,7), (0,1,4,7), ..., (81 hidden)]
+
+Machine 2:
+  Diagram: [ 🟨 ⬛ 🟨 🟨 ⬛ 🟨 ⬛ 🟨 ]
+  Best presses: 53
+  Presses per button: [14, 0, 8, 4, 16, 7, 4]
+  Sample combo: [(0,3,6,7), (0,3,6,7), (0,3,6,7), (0,3,6,7), (0,3,6,7), ..., (48 hidden)]
+
+Machine 3:
+  Diagram: [ 🟨 ⬛ 🟨 ⬛ ]
+  Best presses: 120
+  Presses per button: [110, 10]
+  Sample combo: [(0,2), (0,2), (0,2), (0,2), (0,2), ..., (115 hidden)]
+
+Machine 4:
+  Diagram: [ 🟨 🟨 ⬛ 🟨 🟨 🟨 ]
+  Best presses: 162
+  Presses per button: [23, 9, 5, 125, 0]
+  Sample combo: [(1,4,5), (1,4,5), (1,4,5), (1,4,5), (1,4,5), ..., (157 hidden)]
+
+Machine 5:
+  Diagram: [ ⬛ 🟨 ⬛ ⬛ 🟨 🟨 🟨 ⬛ 🟨 ]
+  Best presses: 119
+  Presses per button: [15, 13, 3, 17, 0, 18, 20, 7, 15, 11]
+  Sample combo: [(0,3), (0,3), (0,3), (0,3), (0,3), ..., (114 hidden)]
+
+Machine 6:
+  Diagram: [ 🟨 🟨 🟨 🟨 ⬛ ]
+  Best presses: 45
+  Presses per button: [3, 9, 2, 12, 19]
+  Sample combo: [(0,2,4), (0,2,4), (0,2,4), (0,2,3), (0,2,3), ..., (40 hidden)]
+
+Machine 7:
+  Diagram: [ ⬛ 🟨 ⬛ 🟨 ⬛ ]
+  Best presses: 141
+  Presses per button: [11, 117, 2, 11]
+  Sample combo: [(1,2,4), (1,2,4), (1,2,4), (1,2,4), (1,2,4), ..., (136 hidden)]
+
+Machine 8:
+  Diagram: [ ⬛ 🟨 🟨 ⬛ 🟨 ]
+  Best presses: 50
+  Presses per button: [9, 19, 6, 16]
+  Sample combo: [(1,3), (1,3), (1,3), (1,3), (1,3), ..., (45 hidden)]
+
+Machine 9:
+  Diagram: [ 🟨 ⬛ 🟨 ⬛ ]
+  Best presses: 126
+  Presses per button: [6, 1, 103, 16]
+  Sample combo: [(0,3), (0,3), (0,3), (0,3), (0,3), ..., (121 hidden)]
+
+Machine 10:
+  Diagram: [ 🟨 ⬛ 🟨 🟨 ]
+  Best presses: 212
+  Presses per button: [197, 15]
+  Sample combo: [(0,2,3), (0,2,3), (0,2,3), (0,2,3), (0,2,3), ..., (207 hidden)]
+
+Machine 11:
+  Diagram: [ ⬛ 🟨 🟨 🟨 🟨 ⬛ ]
+  Best presses: 75
+  Presses per button: [10, 14, 0, 22, 13, 6, 10]
+  Sample combo: [(0,1,2,3), (0,1,2,3), (0,1,2,3), (0,1,2,3), (0,1,2,3), ..., (70 hidden)]
+
+Machine 12:
+  Diagram: [ 🟨 🟨 🟨 🟨 ⬛ 🟨 🟨 ]
+  Best presses: 81
+  Presses per button: [4, 17, 8, 10, 9, 13, 20]
+  Sample combo: [(0,1,2,5,6), (0,1,2,5,6), (0,1,2,5,6), (0,1,2,5,6), (3,4), ..., (76 hidden)]
+
+Machine 13:
+  Diagram: [ ⬛ 🟨 🟨 🟨 🟨 ⬛ 🟨 ]
+  Best presses: 94
+  Presses per button: [18, 20, 15, 15, 19, 7]
+  Sample combo: [(3,4,5,6), (3,4,5,6), (3,4,5,6), (3,4,5,6), (3,4,5,6), ..., (89 hidden)]
+
+Machine 14:
+  Diagram: [ 🟨 ⬛ 🟨 🟨 🟨 ⬛ ]
+  Best presses: 44
+  Presses per button: [0, 17, 8, 3, 15, 1]
+  Sample combo: [(1,2,3,4), (1,2,3,4), (1,2,3,4), (1,2,3,4), (1,2,3,4), ..., (39 hidden)]
+
+Machine 15:
+  Diagram: [ 🟨 ⬛ 🟨 🟨 ⬛ 🟨 ]
+  Best presses: 205
+  Presses per button: [15, 20, 11, 159]
+  Sample combo: [(0,1,5), (0,1,5), (0,1,5), (0,1,5), (0,1,5), ..., (200 hidden)]
+
+Machine 16:
+  Diagram: [ 🟨 🟨 ⬛ ⬛ ⬛ ⬛ ]
+  Best presses: 52
+  Presses per button: [0, 4, 19, 3, 5, 0, 14, 7]
+  Sample combo: [(0,1,4,5), (0,1,4,5), (0,1,4,5), (0,1,4,5), (0,1,2,5), ..., (47 hidden)]
+
+Machine 17:
+  Diagram: [ ⬛ 🟨 ⬛ ⬛ ⬛ 🟨 ⬛ ⬛ ]
+  Best presses: 61
+  Presses per button: [8, 7, 10, 1, 16, 19]
+  Sample combo: [(0,1,2,3,6,7), (0,1,2,3,6,7), (0,1,2,3,6,7), (0,1,2,3,6,7), (0,1,2,3,6,7), ..., (56 hidden)]
+
+Machine 18:
+  Diagram: [ ⬛ 🟨 🟨 🟨 🟨 ⬛ 🟨 🟨 ⬛ ⬛ ]
+  Best presses: 221
+  Presses per button: [0, 2, 125, 5, 11, 15, 18, 16, 14, 4, 11]
+  Sample combo: [(1,3,4,6,7,8,9), (1,3,4,6,7,8,9), (0,1,2,3,5,6,7,8,9), (0,1,2,3,5,6,7,8,9), (0,1,2,3,5,6,7,8,9), ..., (216 hidden)]
+
+Machine 19:
+  Diagram: [ ⬛ ⬛ 🟨 🟨 🟨 ]
+  Best presses: 37
+  Presses per button: [5, 3, 15, 14]
+  Sample combo: [(1,2,3,4), (1,2,3,4), (1,2,3,4), (1,2,3,4), (1,2,3,4), ..., (32 hidden)]
+
+Machine 20:
+  Diagram: [ 🟨 🟨 🟨 ⬛ 🟨 ]
+  Best presses: 30
+  Presses per button: [0, 18, 0, 0, 12]
+  Sample combo: [(0,1,2,4), (0,1,2,4), (0,1,2,4), (0,1,2,4), (0,1,2,4), ..., (25 hidden)]
+
+Machine 21:
+  Diagram: [ ⬛ ⬛ ⬛ 🟨 🟨 🟨 ⬛ 🟨 🟨 ⬛ ]
+  Best presses: 89
+  Presses per button: [12, 3, 16, 1, 14, 18, 6, 17, 2]
+  Sample combo: [(5,6,9), (5,6,9), (5,6,9), (5,6,9), (5,6,9), ..., (84 hidden)]
+
+Machine 22:
+  Diagram: [ ⬛ 🟨 ⬛ ⬛ 🟨 ⬛ 🟨 ⬛ ⬛ 🟨 ]
+  Best presses: 86
+  Presses per button: [16, 3, 10, 1, 12, 17, 16, 11]
+  Sample combo: [(1,3,5,6,7,8,9), (1,3,5,6,7,8,9), (1,3,5,6,7,8,9), (1,3,5,6,7,8,9), (1,3,5,6,7,8,9), ..., (81 hidden)]
+
+Machine 23:
+  Diagram: [ 🟨 ⬛ 🟨 ⬛ ⬛ 🟨 🟨 🟨 ⬛ 🟨 ]
+  Best presses: 113
+  Presses per button: [4, 18, 5, 15, 9, 17, 17, 18, 6, 4]
+  Sample combo: [(9), (9), (9), (9), (0,8,9), ..., (108 hidden)]
+
+Machine 24:
+  Diagram: [ 🟨 🟨 ⬛ ⬛ 🟨 🟨 🟨 ⬛ 🟨 ⬛ ]
+  Best presses: 149
+  Presses per button: [1, 18, 18, 23, 18, 0, 18, 10, 16, 8, 19]
+  Sample combo: [(4,7), (1,2,4,5,6,7,9), (1,2,4,5,6,7,9), (1,2,4,5,6,7,9), (1,2,4,5,6,7,9), ..., (144 hidden)]
+
+Machine 25:
+  Diagram: [ ⬛ 🟨 🟨 ⬛ 🟨 🟨 ⬛ ⬛ 🟨 🟨 ]
+  Best presses: 120
+  Presses per button: [12, 8, 7, 0, 21, 14, 7, 15, 14, 2, 11, 2, 7]
+  Sample combo: [(0,1,3,5,6,7,8), (0,1,3,5,6,7,8), (0,1,3,5,6,7,8), (0,1,3,5,6,7,8), (0,1,3,5,6,7,8), ..., (115 hidden)]
+
+Machine 26:
+  Diagram: [ ⬛ 🟨 ⬛ ⬛ ⬛ ⬛ ⬛ ]
+  Best presses: 88
+  Presses per button: [3, 9, 11, 14, 21, 30, 0, 0]
+  Sample combo: [(1,2,3,5), (1,2,3,5), (1,2,3,5), (0,2,3,4,5,6), (0,2,3,4,5,6), ..., (83 hidden)]
+
+Machine 27:
+  Diagram: [ ⬛ 🟨 🟨 ⬛ ⬛ ⬛ 🟨 ]
+  Best presses: 214
+  Presses per button: [141, 7, 11, 4, 19, 18, 14]
+  Sample combo: [(0,1,3,4,6), (0,1,3,4,6), (0,1,3,4,6), (0,1,3,4,6), (0,1,3,4,6), ..., (209 hidden)]
+
+Machine 28:
+  Diagram: [ 🟨 🟨 🟨 ⬛ ⬛ 🟨 ]
+  Best presses: 73
+  Presses per button: [7, 11, 9, 16, 17, 13]
+  Sample combo: [(4,5), (4,5), (4,5), (4,5), (4,5), ..., (68 hidden)]
+
+Machine 29:
+  Diagram: [ ⬛ ⬛ 🟨 ⬛ ⬛ ⬛ ⬛ ⬛ ⬛ ⬛ ]
+  Best presses: 70
+  Presses per button: [10, 2, 13, 3, 5, 7, 9, 3, 18]
+  Sample combo: [(1,8), (1,8), (1,8), (1,8), (1,8), ..., (65 hidden)]
+
+Machine 30:
+  Diagram: [ 🟨 🟨 🟨 ⬛ 🟨 ⬛ ]
+  Best presses: 66
+  Presses per button: [19, 0, 13, 9, 9, 7, 9]
+  Sample combo: [(0,2,3,4), (0,2,3,4), (0,2,3,4), (0,2,3,4), (0,2,3,4), ..., (61 hidden)]
+
+Machine 31:
+  Diagram: [ 🟨 ⬛ ⬛ ⬛ ⬛ 🟨 🟨 🟨 ]
+  Best presses: 112
+  Presses per button: [0, 17, 14, 11, 0, 18, 20, 2, 30]
+  Sample combo: [(2,4,6,7), (2,4,6,7), (2,4,6,7), (2,4,6,7), (2,4,6,7), ..., (107 hidden)]
+
+Machine 32:
+  Diagram: [ 🟨 🟨 🟨 🟨 🟨 ]
+  Best presses: 37
+  Presses per button: [6, 1, 10, 8, 12]
+  Sample combo: [(0,3,4), (0,3,4), (0,3,4), (0,3,4), (0,3,4), ..., (32 hidden)]
+
+Machine 33:
+  Diagram: [ 🟨 ⬛ 🟨 ⬛ 🟨 ⬛ 🟨 ⬛ 🟨 ]
+  Best presses: 94
+  Presses per button: [10, 11, 5, 7, 0, 12, 11, 12, 7, 19]
+  Sample combo: [(1,3,5,7,8), (1,3,5,7,8), (1,3,5,7,8), (1,3,5,7,8), (1,3,5,7,8), ..., (89 hidden)]
+
+Machine 34:
+  Diagram: [ ⬛ 🟨 ⬛ ⬛ ⬛ 🟨 🟨 🟨 ]
+  Best presses: 68
+  Presses per button: [10, 13, 16, 10, 0, 0, 5, 14]
+  Sample combo: [(3,4), (3,4), (3,4), (3,4), (3,4), ..., (63 hidden)]
+
+Machine 35:
+  Diagram: [ 🟨 🟨 ⬛ 🟨 ]
+  Best presses: 52
+  Presses per button: [0, 2, 14, 13, 0, 23]
+  Sample combo: [(0,3), (0,3), (1,2), (1,2), (1,2), ..., (47 hidden)]
+
+Machine 36:
+  Diagram: [ ⬛ 🟨 🟨 ⬛ 🟨 🟨 ]
+  Best presses: 221
+  Presses per button: [19, 5, 16, 4, 177]
+  Sample combo: [(0,4), (0,4), (0,4), (0,4), (0,4), ..., (216 hidden)]
+
+Machine 37:
+  Diagram: [ 🟨 ⬛ 🟨 🟨 ]
+  Best presses: 16
+  Presses per button: [4, 5, 0, 7]
+  Sample combo: [(0,2), (0,2), (0,2), (0,2), (0,2,3), ..., (11 hidden)]
+
+Machine 38:
+  Diagram: [ ⬛ 🟨 🟨 🟨 🟨 ⬛ 🟨 🟨 🟨 ⬛ ]
+  Best presses: 305
+  Presses per button: [196, 18, 15, 17, 8, 11, 11, 9, 10, 10]
+  Sample combo: [(3,4,8,9), (3,4,8,9), (3,4,8,9), (3,4,8,9), (3,4,8,9), ..., (300 hidden)]
+
+Machine 39:
+  Diagram: [ ⬛ 🟨 ⬛ ⬛ 🟨 🟨 🟨 🟨 ]
+  Best presses: 118
+  Presses per button: [11, 3, 3, 16, 0, 21, 26, 9, 20, 9]
+  Sample combo: [(1,4,6,7), (1,4,6,7), (1,4,6,7), (1,4,6,7), (1,4,6,7), ..., (113 hidden)]
+
+Machine 40:
+  Diagram: [ 🟨 ⬛ 🟨 ⬛ ⬛ ⬛ ⬛ 🟨 ⬛ ]
+  Best presses: 93
+  Presses per button: [5, 6, 5, 19, 12, 1, 4, 4, 20, 17]
+  Sample combo: [(0,1,2,4,5,6,8), (0,1,2,4,5,6,8), (0,1,2,4,5,6,8), (0,1,2,4,5,6,8), (0,1,2,4,5,6,8), ..., (88 hidden)]
+
+Machine 41:
+  Diagram: [ 🟨 🟨 🟨 🟨 🟨 ⬛ 🟨 ]
+  Best presses: 56
+  Presses per button: [14, 16, 2, 12, 12]
+  Sample combo: [(1,3,4,5,6), (1,3,4,5,6), (1,3,4,5,6), (1,3,4,5,6), (1,3,4,5,6), ..., (51 hidden)]
+
+Machine 42:
+  Diagram: [ 🟨 ⬛ ⬛ ⬛ ⬛ 🟨 ]
+  Best presses: 57
+  Presses per button: [17, 8, 7, 13, 12, 0]
+  Sample combo: [(1,2,3), (1,2,3), (1,2,3), (1,2,3), (1,2,3), ..., (52 hidden)]
+
+Machine 43:
+  Diagram: [ 🟨 🟨 🟨 🟨 ⬛ ]
+  Best presses: 78
+  Presses per button: [20, 18, 11, 9, 20]
+  Sample combo: [(0,1,4), (0,1,4), (0,1,4), (0,1,4), (0,1,4), ..., (73 hidden)]
+
+Machine 44:
+  Diagram: [ ⬛ ⬛ ⬛ ⬛ 🟨 🟨 🟨 ]
+  Best presses: 274
+  Presses per button: [21, 0, 24, 173, 20, 24, 5, 7]
+  Sample combo: [(0,1,2,4,6), (0,1,2,4,6), (0,1,2,4,6), (0,1,2,4,6), (0,1,2,4,6), ..., (269 hidden)]
+
+Machine 45:
+  Diagram: [ 🟨 🟨 ⬛ 🟨 🟨 ⬛ ⬛ 🟨 🟨 ⬛ ]
+  Best presses: 227
+  Presses per button: [18, 12, 10, 22, 109, 11, 6, 6, 12, 11, 10]
+  Sample combo: [(2,3,4,7,8), (2,3,4,7,8), (2,3,4,7,8), (2,3,4,7,8), (2,3,4,7,8), ..., (222 hidden)]
+
+Machine 46:
+  Diagram: [ ⬛ ⬛ 🟨 🟨 🟨 ⬛ ⬛ ⬛ ⬛ ]
+  Best presses: 79
+  Presses per button: [3, 12, 7, 1, 13, 12, 14, 17]
+  Sample combo: [(2,6,7), (2,6,7), (2,6,7), (2,4,7), (2,4,7), ..., (74 hidden)]
+
+Machine 47:
+  Diagram: [ ⬛ 🟨 ⬛ ⬛ ]
+  Best presses: 33
+  Presses per button: [0, 12, 3, 1, 17]
+  Sample combo: [(0,1,2), (0,1,2), (0,1,2), (0,1,2), (0,1,2), ..., (28 hidden)]
+
+Machine 48:
+  Diagram: [ ⬛ 🟨 🟨 ⬛ 🟨 🟨 🟨 ⬛ ]
+  Best presses: 75
+  Presses per button: [13, 17, 14, 17, 11, 1, 2]
+  Sample combo: [(2,4,5,6,7), (2,4,5,6,7), (2,4,5,6,7), (2,4,5,6,7), (2,4,5,6,7), ..., (70 hidden)]
+
+Machine 49:
+  Diagram: [ ⬛ ⬛ 🟨 🟨 🟨 ⬛ 🟨 ⬛ ]
+  Best presses: 222
+  Presses per button: [15, 154, 3, 14, 9, 11, 16]
+  Sample combo: [(0,1,2,5,6), (0,1,2,5,6), (0,1,2,5,6), (0,1,2,5,6), (0,1,2,5,6), ..., (217 hidden)]
+
+Machine 50:
+  Diagram: [ ⬛ 🟨 🟨 🟨 ⬛ ]
+  Best presses: 190
+  Presses per button: [11, 23, 0, 22, 134, 0]
+  Sample combo: [(1,2,3), (1,2,3), (1,2,3), (1,2,3), (1,2,3), ..., (185 hidden)]
+
+Machine 51:
+  Diagram: [ 🟨 🟨 🟨 🟨 ⬛ 🟨 ⬛ 🟨 ]
+  Best presses: 93
+  Presses per button: [0, 11, 18, 20, 18, 0, 0, 11, 6, 9]
+  Sample combo: [(0,1,2,3,5,7), (0,1,2,3,5,7), (0,1,2,3,5,7), (0,1,2,3,5,7), (0,1,2,3,5,7), ..., (88 hidden)]
+
+Machine 52:
+  Diagram: [ 🟨 ⬛ 🟨 ⬛ ]
+  Best presses: 28
+  Presses per button: [16, 12]
+  Sample combo: [(0,1,2,3), (0,1,2,3), (0,1,2,3), (0,1,2,3), (0,1,2,3), ..., (23 hidden)]
+
+Machine 53:
+  Diagram: [ 🟨 🟨 🟨 ⬛ ⬛ 🟨 ⬛ ]
+  Best presses: 73
+  Presses per button: [18, 4, 20, 18, 4, 0, 9]
+  Sample combo: [(0,1,2,4), (0,1,2,4), (0,1,2,4), (0,1,2,4), (0,1,2,4), ..., (68 hidden)]
+
+Machine 54:
+  Diagram: [ ⬛ 🟨 🟨 ⬛ 🟨 🟨 ⬛ ⬛ 🟨 ]
+  Best presses: 110
+  Presses per button: [16, 17, 12, 15, 12, 15, 16, 7]
+  Sample combo: [(0,3,6,8), (0,3,6,8), (0,3,6,8), (0,3,6,8), (0,3,6,8), ..., (105 hidden)]
+
+Machine 55:
+  Diagram: [ 🟨 🟨 ⬛ 🟨 ]
+  Best presses: 27
+  Presses per button: [19, 8]
+  Sample combo: [(0,1,3), (0,1,3), (0,1,3), (0,1,3), (0,1,3), ..., (22 hidden)]
+
+Machine 56:
+  Diagram: [ 🟨 ⬛ ⬛ ⬛ ⬛ 🟨 🟨 ]
+  Best presses: 53
+  Presses per button: [8, 9, 0, 16, 2, 18]
+  Sample combo: [(0,1,4,6), (0,1,4,6), (0,1,4,6), (0,1,4,6), (0,1,4,6), ..., (48 hidden)]
+
+Machine 57:
+  Diagram: [ 🟨 🟨 ⬛ ⬛ ]
+  Best presses: 48
+  Presses per button: [7, 7, 6, 0, 27, 1]
+  Sample combo: [(0,3), (0,3), (0,3), (0,3), (0,3), ..., (43 hidden)]
+
+Machine 58:
+  Diagram: [ 🟨 🟨 🟨 ⬛ ]
+  Best presses: 27
+  Presses per button: [7, 10, 10]
+  Sample combo: [(1,2,3), (1,2,3), (1,2,3), (1,2,3), (1,2,3), ..., (22 hidden)]
+
+Machine 59:
+  Diagram: [ ⬛ ⬛ 🟨 🟨 ⬛ ⬛ ]
+  Best presses: 37
+  Presses per button: [7, 6, 15, 9]
+  Sample combo: [(0,1,2,3,5), (0,1,2,3,5), (0,1,2,3,5), (0,1,2,3,5), (0,1,2,3,5), ..., (32 hidden)]
+
+Machine 60:
+  Diagram: [ ⬛ ⬛ 🟨 🟨 🟨 ]
+  Best presses: 39
+  Presses per button: [13, 6, 20]
+  Sample combo: [(0,2), (0,2), (0,2), (0,2), (0,2), ..., (34 hidden)]
+
+Machine 61:
+  Diagram: [ ⬛ 🟨 ⬛ ⬛ ]
+  Best presses: 23
+  Presses per button: [12, 1, 3, 0, 7, 0]
+  Sample combo: [(2), (2), (2), (2), (2), ..., (18 hidden)]
+
+Machine 62:
+  Diagram: [ 🟨 🟨 ⬛ 🟨 ⬛ 🟨 ⬛ ⬛ 🟨 🟨 ]
+  Best presses: 68
+  Presses per button: [6, 6, 6, 6, 9, 0, 6, 19, 1, 9]
+  Sample combo: [(3,6,9), (3,6,9), (3,6,9), (3,6,9), (3,6,9), ..., (63 hidden)]
+
+Machine 63:
+  Diagram: [ ⬛ 🟨 🟨 ⬛ ]
+  Best presses: 33
+  Presses per button: [19, 7, 4, 3]
+  Sample combo: [(0,1,3), (0,1,3), (0,1,3), (0,1,3), (0,1,3), ..., (28 hidden)]
+
+Machine 64:
+  Diagram: [ ⬛ ⬛ 🟨 🟨 ⬛ 🟨 ]
+  Best presses: 95
+  Presses per button: [21, 18, 0, 25, 5, 22, 0, 4]
+  Sample combo: [(0,1,2,3), (0,1,2,3), (0,1,2,3), (0,1,2,3), (0,1,2,3), ..., (90 hidden)]
+
+Machine 65:
+  Diagram: [ 🟨 🟨 ⬛ ⬛ 🟨 🟨 🟨 ⬛ ⬛ ]
+  Best presses: 62
+  Presses per button: [2, 16, 15, 3, 13, 10, 3]
+  Sample combo: [(3,6,8), (3,6,8), (3,4,8), (3,4,8), (3,4,8), ..., (57 hidden)]
+
+Machine 66:
+  Diagram: [ ⬛ ⬛ ⬛ ⬛ ⬛ ⬛ 🟨 ⬛ ⬛ 🟨 ]
+  Best presses: 101
+  Presses per button: [1, 0, 6, 16, 4, 12, 20, 14, 11, 17]
+  Sample combo: [(0,1,3,4,5,7,8,9), (2,6,7), (2,6,7), (2,6,7), (2,6,7), ..., (96 hidden)]
+
+Machine 67:
+  Diagram: [ ⬛ 🟨 🟨 ⬛ ⬛ 🟨 🟨 🟨 🟨 ]
+  Best presses: 89
+  Presses per button: [17, 3, 2, 4, 20, 11, 0, 5, 12, 1, 14]
+  Sample combo: [(3,4), (3,4), (3,4), (3,4), (3,4), ..., (84 hidden)]
+
+Machine 68:
+  Diagram: [ 🟨 🟨 ⬛ ⬛ ⬛ ⬛ ]
+  Best presses: 139
+  Presses per button: [19, 119, 0, 1]
+  Sample combo: [(0,1,2,4,5), (0,1,2,4,5), (0,1,2,4,5), (0,1,2,4,5), (0,1,2,4,5), ..., (134 hidden)]
+
+Machine 69:
+  Diagram: [ 🟨 ⬛ ⬛ ⬛ 🟨 ⬛ ⬛ 🟨 ⬛ 🟨 ]
+  Best presses: 91
+  Presses per button: [18, 0, 0, 3, 10, 5, 3, 5, 7, 6, 10, 0, 24]
+  Sample combo: [(0,1,3,4,5,7,8,9), (0,1,3,4,5,7,8,9), (0,1,3,4,5,7,8,9), (0,1,3,4,5,7,8,9), (0,1,3,4,5,7,8,9), ..., (86 hidden)]
+
+Machine 70:
+  Diagram: [ 🟨 🟨 ⬛ ⬛ 🟨 ⬛ 🟨 ]
+  Best presses: 228
+  Presses per button: [20, 176, 7, 15, 10]
+  Sample combo: [(0,1,4,6), (0,1,4,6), (0,1,4,6), (0,1,4,6), (0,1,4,6), ..., (223 hidden)]
+
+Machine 71:
+  Diagram: [ ⬛ ⬛ ⬛ ⬛ ⬛ 🟨 🟨 🟨 🟨 🟨 ]
+  Best presses: 49
+  Presses per button: [0, 3, 5, 8, 8, 19, 5, 1]
+  Sample combo: [(0,1,2,3,5,6,7,8,9), (0,1,2,3,5,6,7,8,9), (0,1,2,3,5,6,7,8,9), (0,1,2,3,4,5,6,7,9), (0,1,2,3,4,5,6,7,9), ..., (44 hidden)]
+
+Machine 72:
+  Diagram: [ ⬛ ⬛ ⬛ 🟨 🟨 ]
+  Best presses: 78
+  Presses per button: [0, 30, 8, 0, 20, 4, 16]
+  Sample combo: [(2,3,4), (2,3,4), (2,3,4), (2,3,4), (2,3,4), ..., (73 hidden)]
+
+Machine 73:
+  Diagram: [ 🟨 🟨 ⬛ 🟨 ⬛ ⬛ ⬛ ]
+  Best presses: 87
+  Presses per button: [0, 0, 9, 8, 31, 11, 18, 10]
+  Sample combo: [(0,2,3,5,6), (0,2,3,5,6), (0,2,3,5,6), (0,2,3,5,6), (0,2,3,5,6), ..., (82 hidden)]
+
+Machine 74:
+  Diagram: [ ⬛ ⬛ 🟨 ⬛ ⬛ ]
+  Best presses: 213
+  Presses per button: [17, 7, 8, 24, 0, 1, 156]
+  Sample combo: [(0,2,4), (0,2,4), (0,2,4), (0,2,4), (0,2,4), ..., (208 hidden)]
+
+Machine 75:
+  Diagram: [ ⬛ ⬛ ⬛ ⬛ 🟨 ]
+  Best presses: 241
+  Presses per button: [16, 18, 167, 0, 20, 20, 0]
+  Sample combo: [(0,1), (0,1), (0,1), (0,1), (0,1), ..., (236 hidden)]
+
+Machine 76:
+  Diagram: [ 🟨 ⬛ 🟨 🟨 🟨 ⬛ ⬛ ⬛ 🟨 ]
+  Best presses: 73
+  Presses per button: [6, 19, 12, 18, 3, 5, 10]
+  Sample combo: [(0,2,3,4,8), (0,2,3,4,8), (0,2,3,4,8), (0,2,3,4,8), (0,2,3,4,8), ..., (68 hidden)]
+
+Machine 77:
+  Diagram: [ 🟨 🟨 ⬛ 🟨 ⬛ 🟨 🟨 ]
+  Best presses: 64
+  Presses per button: [16, 4, 11, 16, 12, 5]
+  Sample combo: [(4,5), (4,5), (4,5), (4,5), (4,5), ..., (59 hidden)]
+
+Machine 78:
+  Diagram: [ 🟨 ⬛ ⬛ ⬛ ⬛ 🟨 ]
+  Best presses: 67
+  Presses per button: [14, 8, 5, 15, 17, 0, 0, 8]
+  Sample combo: [(0,1,3,4), (0,1,3,4), (0,1,3,4), (0,1,3,4), (0,1,3,4), ..., (62 hidden)]
+
+Machine 79:
+  Diagram: [ ⬛ ⬛ ⬛ 🟨 🟨 🟨 ⬛ ⬛ ⬛ 🟨 ]
+  Best presses: 97
+  Presses per button: [0, 14, 9, 10, 15, 4, 9, 0, 21, 5, 0, 10]
+  Sample combo: [(4,8,9), (4,8,9), (4,8,9), (4,8,9), (4,8,9), ..., (92 hidden)]
+
+Machine 80:
+  Diagram: [ ⬛ 🟨 ⬛ ⬛ 🟨 ]
+  Best presses: 53
+  Presses per button: [5, 3, 14, 20, 11]
+  Sample combo: [(0,2,4), (0,2,4), (0,2,4), (0,2,4), (0,2,4), ..., (48 hidden)]
+
+Machine 81:
+  Diagram: [ 🟨 🟨 🟨 ⬛ 🟨 ]
+  Best presses: 44
+  Presses per button: [2, 4, 18, 11, 9]
+  Sample combo: [(0,4), (0,4), (3,4), (3,4), (3,4), ..., (39 hidden)]
+
+Machine 82:
+  Diagram: [ 🟨 🟨 🟨 ⬛ ⬛ ⬛ ⬛ 🟨 ]
+  Best presses: 85
+  Presses per button: [19, 8, 20, 7, 20, 11]
+  Sample combo: [(0,1,2,3,5,6), (0,1,2,3,5,6), (0,1,2,3,5,6), (0,1,2,3,5,6), (0,1,2,3,5,6), ..., (80 hidden)]
+
+Machine 83:
+  Diagram: [ ⬛ ⬛ 🟨 ⬛ ⬛ 🟨 ⬛ ⬛ 🟨 🟨 ]
+  Best presses: 111
+  Presses per button: [1, 12, 8, 0, 14, 14, 13, 7, 8, 28, 6]
+  Sample combo: [(2,3,5,6,8), (1,3,4,5,6,7,9), (1,3,4,5,6,7,9), (1,3,4,5,6,7,9), (1,3,4,5,6,7,9), ..., (106 hidden)]
+
+Machine 84:
+  Diagram: [ 🟨 ⬛ ⬛ 🟨 🟨 🟨 🟨 ]
+  Best presses: 56
+  Presses per button: [2, 0, 18, 9, 18, 7, 2]
+  Sample combo: [(0,2), (0,2), (2,4,5), (2,4,5), (2,4,5), ..., (51 hidden)]
+
+Machine 85:
+  Diagram: [ 🟨 🟨 🟨 ⬛ 🟨 ]
+  Best presses: 214
+  Presses per button: [32, 24, 3, 0, 0, 155]
+  Sample combo: [(2,3), (2,3), (2,3), (2,3), (2,3), ..., (209 hidden)]
+
+Machine 86:
+  Diagram: [ 🟨 🟨 🟨 🟨 ⬛ 🟨 ⬛ ]
+  Best presses: 265
+  Presses per button: [25, 179, 15, 23, 17, 1, 5]
+  Sample combo: [(2,3,4,5,6), (2,3,4,5,6), (2,3,4,5,6), (2,3,4,5,6), (2,3,4,5,6), ..., (260 hidden)]
+
+Machine 87:
+  Diagram: [ ⬛ ⬛ ⬛ ⬛ ⬛ ⬛ ⬛ ⬛ 🟨 ⬛ ]
+  Best presses: 118
+  Presses per button: [12, 0, 16, 0, 1, 0, 5, 24, 12, 10, 13, 23, 2]
+  Sample combo: [(0,3,6,7,9), (0,3,6,7,9), (0,3,6,7,9), (0,3,6,7,9), (0,3,6,7,9), ..., (113 hidden)]
+
+Machine 88:
+  Diagram: [ ⬛ 🟨 🟨 ⬛ 🟨 ]
+  Best presses: 45
+  Presses per button: [1, 0, 7, 0, 14, 18, 5]
+  Sample combo: [(3,4), (1,2), (1,2), (1,2), (1,2), ..., (40 hidden)]
+
+Machine 89:
+  Diagram: [ ⬛ 🟨 ⬛ ⬛ 🟨 ]
+  Best presses: 35
+  Presses per button: [9, 17, 9]
+  Sample combo: [(2,3), (2,3), (2,3), (2,3), (2,3), ..., (30 hidden)]
+
+Machine 90:
+  Diagram: [ ⬛ ⬛ 🟨 ⬛ ]
+  Best presses: 54
+  Presses per button: [16, 0, 2, 21, 15]
+  Sample combo: [(3), (3), (3), (3), (3), ..., (49 hidden)]
+
+Machine 91:
+  Diagram: [ 🟨 🟨 🟨 🟨 ⬛ ⬛ ]
+  Best presses: 55
+  Presses per button: [0, 8, 20, 0, 10, 5, 12]
+  Sample combo: [(0,2,3,5), (0,2,3,5), (0,2,3,5), (0,2,3,5), (0,2,3,5), ..., (50 hidden)]
+
+Machine 92:
+  Diagram: [ 🟨 ⬛ ⬛ 🟨 🟨 ]
+  Best presses: 19
+  Presses per button: [1, 4, 13, 1]
+  Sample combo: [(2), (0,3,4), (0,3,4), (0,3,4), (0,3,4), ..., (14 hidden)]
+
+Machine 93:
+  Diagram: [ ⬛ 🟨 🟨 ⬛ ⬛ 🟨 🟨 ⬛ ⬛ ⬛ ]
+  Best presses: 103
+  Presses per button: [13, 4, 7, 11, 12, 13, 20, 3, 2, 0, 18, 0]
+  Sample combo: [(0,1,2,4,5,6,7,9), (0,1,2,4,5,6,7,9), (0,1,2,4,5,6,7,9), (0,1,2,4,5,6,7,9), (0,1,2,4,5,6,7,9), ..., (98 hidden)]
+
+Machine 94:
+  Diagram: [ ⬛ 🟨 🟨 🟨 ]
+  Best presses: 112
+  Presses per button: [0, 112]
+  Sample combo: [(1,2,3), (1,2,3), (1,2,3), (1,2,3), (1,2,3), ..., (107 hidden)]
+
+Machine 95:
+  Diagram: [ ⬛ 🟨 🟨 ⬛ ⬛ ⬛ ⬛ 🟨 ]
+  Best presses: 61
+  Presses per button: [0, 18, 11, 1, 9, 9, 4, 9]
+  Sample combo: [(3,5), (3,5), (3,5), (3,5), (3,5), ..., (56 hidden)]
+
+Machine 96:
+  Diagram: [ 🟨 ⬛ ⬛ ⬛ ⬛ ⬛ ⬛ 🟨 ]
+  Best presses: 100
+  Presses per button: [12, 25, 1, 5, 10, 0, 6, 16, 25, 0]
+  Sample combo: [(0,1,2,3,5,7), (0,1,2,3,5,7), (0,1,2,3,5,7), (0,1,2,3,5,7), (0,1,2,3,5,7), ..., (95 hidden)]
+
+Machine 97:
+  Diagram: [ ⬛ 🟨 🟨 🟨 🟨 🟨 ]
+  Best presses: 38
+  Presses per button: [15, 6, 14, 3]
+  Sample combo: [(0,1,4,5), (0,1,4,5), (0,1,4,5), (0,1,4,5), (0,1,4,5), ..., (33 hidden)]
+
+Machine 98:
+  Diagram: [ ⬛ ⬛ ⬛ ⬛ ⬛ ⬛ 🟨 ⬛ 🟨 🟨 ]
+  Best presses: 136
+  Presses per button: [4, 11, 8, 0, 0, 17, 18, 16, 0, 5, 18, 30, 9]
+  Sample combo: [(3,4,9), (3,4,9), (3,4,9), (3,4,9), (3,7,9), ..., (131 hidden)]
+
+Machine 99:
+  Diagram: [ 🟨 ⬛ 🟨 ⬛ 🟨 🟨 🟨 ⬛ ]
+  Best presses: 84
+  Presses per button: [5, 5, 28, 21, 3, 0, 22, 0]
+  Sample combo: [(1,3,6,7), (1,3,6,7), (1,3,6,7), (1,3,6,7), (1,3,6,7), ..., (79 hidden)]
+
+Machine 100:
+  Diagram: [ 🟨 🟨 🟨 ⬛ ⬛ 🟨 ⬛ ⬛ 🟨 ]
+  Best presses: 72
+  Presses per button: [15, 13, 8, 10, 1, 9, 12, 0, 4]
+  Sample combo: [(4,5), (4,5), (4,5), (4,5), (4,5), ..., (67 hidden)]
+
+Machine 101:
+  Diagram: [ ⬛ 🟨 🟨 ⬛ ]
+  Best presses: 55
+  Presses per button: [19, 20, 16]
+  Sample combo: [(2,3), (2,3), (2,3), (2,3), (2,3), ..., (50 hidden)]
+
+Machine 102:
+  Diagram: [ 🟨 ⬛ 🟨 🟨 ⬛ ⬛ 🟨 🟨 🟨 🟨 ]
+  Best presses: 102
+  Presses per button: [12, 20, 11, 5, 8, 14, 9, 9, 5, 6, 3]
+  Sample combo: [(0,1,2,4,6,9), (0,1,2,4,6,9), (0,1,2,4,6,9), (0,1,2,4,6,9), (0,1,2,4,6,9), ..., (97 hidden)]
+
+Machine 103:
+  Diagram: [ 🟨 ⬛ 🟨 🟨 ]
+  Best presses: 18
+  Presses per button: [14, 4]
+  Sample combo: [(0,2,3), (0,2,3), (0,2,3), (0,2,3), (0,2,3), ..., (13 hidden)]
+
+Machine 104:
+  Diagram: [ ⬛ 🟨 🟨 🟨 🟨 ⬛ ]
+  Best presses: 42
+  Presses per button: [1, 3, 20, 4, 14]
+  Sample combo: [(0,3,4,5), (2,3), (2,3), (2,3), (0,3,4), ..., (37 hidden)]
+
+Machine 105:
+  Diagram: [ 🟨 🟨 🟨 🟨 🟨 ⬛ ⬛ ⬛ ⬛ ]
+  Best presses: 89
+  Presses per button: [0, 1, 11, 16, 7, 8, 7, 12, 11, 14, 2]
+  Sample combo: [(0,1,2,3,4,6,7,8), (1,2,3,4,5,6,8), (1,2,3,4,5,6,8), (1,2,3,4,5,6,8), (1,2,3,4,5,6,8), ..., (84 hidden)]
+
+Machine 106:
+  Diagram: [ ⬛ ⬛ ⬛ ⬛ ⬛ 🟨 🟨 ⬛ ]
+  Best presses: 230
+  Presses per button: [10, 13, 5, 20, 18, 146, 17, 1]
+  Sample combo: [(0,6), (0,6), (0,6), (0,6), (0,6), ..., (225 hidden)]
+
+Machine 107:
+  Diagram: [ 🟨 ⬛ 🟨 🟨 ⬛ 🟨 ⬛ ⬛ ]
+  Best presses: 61
+  Presses per button: [7, 9, 7, 9, 7, 18, 4]
+  Sample combo: [(0,1,6), (0,1,6), (0,1,6), (0,1,6), (0,1,6), ..., (56 hidden)]
+
+Machine 108:
+  Diagram: [ ⬛ ⬛ ⬛ ⬛ ⬛ 🟨 🟨 ]
+  Best presses: 76
+  Presses per button: [14, 9, 7, 12, 10, 18, 1, 5]
+  Sample combo: [(0,1,2,3,6), (0,1,2,3,6), (0,1,2,3,6), (0,1,2,3,6), (0,1,2,3,6), ..., (71 hidden)]
+
+Machine 109:
+  Diagram: [ ⬛ 🟨 🟨 🟨 🟨 ⬛ 🟨 ]
+  Best presses: 43
+  Presses per button: [12, 17, 5, 8, 1]
+  Sample combo: [(0,1,5), (0,1,5), (0,1,5), (0,1,5), (0,1,5), ..., (38 hidden)]
+
+Machine 110:
+  Diagram: [ ⬛ 🟨 ⬛ 🟨 ]
+  Best presses: 40
+  Presses per button: [16, 0, 9, 9, 0, 6]
+  Sample combo: [(1,3), (1,3), (1,3), (1,3), (1,3), ..., (35 hidden)]
+
+Machine 111:
+  Diagram: [ ⬛ 🟨 🟨 ⬛ ⬛ 🟨 ⬛ ⬛ 🟨 ]
+  Best presses: 101
+  Presses per button: [26, 13, 17, 16, 15, 5, 2, 0, 7]
+  Sample combo: [(1,2,3,4,5,8), (1,2,3,4,5,8), (1,2,3,4,5,8), (1,2,3,4,5,8), (1,2,3,4,5,8), ..., (96 hidden)]
+
+Machine 112:
+  Diagram: [ ⬛ 🟨 🟨 🟨 ]
+  Best presses: 44
+  Presses per button: [4, 1, 19, 0, 20]
+  Sample combo: [(1,2), (1,2), (1,2), (1,2), (0,2,3), ..., (39 hidden)]
+
+Machine 113:
+  Diagram: [ 🟨 🟨 🟨 🟨 ⬛ ⬛ 🟨 ⬛ ]
+  Best presses: 69
+  Presses per button: [9, 6, 8, 9, 18, 19]
+  Sample combo: [(0,1,5,7), (0,1,5,7), (0,1,5,7), (0,1,5,7), (0,1,5,7), ..., (64 hidden)]
+
+Machine 114:
+  Diagram: [ 🟨 ⬛ ⬛ 🟨 🟨 🟨 ⬛ 🟨 ⬛ 🟨 ]
+  Best presses: 67
+  Presses per button: [10, 6, 11, 8, 5, 1, 10, 16]
+  Sample combo: [(2,5,7,8), (2,5,7,8), (2,5,7,8), (2,5,7,8), (2,5,7,8), ..., (62 hidden)]
+
+Machine 115:
+  Diagram: [ 🟨 🟨 🟨 ⬛ 🟨 🟨 ⬛ ⬛ ⬛ 🟨 ]
+  Best presses: 99
+  Presses per button: [19, 3, 14, 0, 18, 20, 20, 0, 5, 0]
+  Sample combo: [(1,2,3,4,8,9), (1,2,3,4,8,9), (1,2,3,4,8,9), (1,2,3,4,8,9), (1,2,3,4,8,9), ..., (94 hidden)]
+
+Machine 116:
+  Diagram: [ ⬛ ⬛ ⬛ 🟨 ⬛ ⬛ ⬛ 🟨 ⬛ ]
+  Best presses: 231
+  Presses per button: [4, 5, 7, 14, 152, 17, 19, 13]
+  Sample combo: [(2,5), (2,5), (2,5), (2,5), (0,3,5,6), ..., (226 hidden)]
+
+Machine 117:
+  Diagram: [ 🟨 ⬛ 🟨 🟨 ⬛ ]
+  Best presses: 72
+  Presses per button: [10, 19, 16, 10, 0, 17]
+  Sample combo: [(1,2,4), (1,2,4), (1,2,4), (1,2,4), (1,2,4), ..., (67 hidden)]
+
+Machine 118:
+  Diagram: [ 🟨 🟨 ⬛ 🟨 ]
+  Best presses: 50
+  Presses per button: [25, 0, 24, 1]
+  Sample combo: [(1,2,3), (1,2,3), (1,2,3), (1,2,3), (1,2,3), ..., (45 hidden)]
+
+Machine 119:
+  Diagram: [ 🟨 🟨 🟨 🟨 🟨 ⬛ ⬛ ⬛ 🟨 ⬛ ]
+  Best presses: 216
+  Presses per button: [140, 14, 8, 20, 12, 0, 19, 3]
+  Sample combo: [(1,2,3,5), (1,2,3,5), (1,2,3,5), (1,2,3,5), (1,2,3,5), ..., (211 hidden)]
+
+Machine 120:
+  Diagram: [ 🟨 ⬛ 🟨 🟨 ⬛ ⬛ ]
+  Best presses: 73
+  Presses per button: [11, 18, 14, 11, 0, 0, 19, 0]
+  Sample combo: [(1), (1), (1), (1), (1), ..., (68 hidden)]
+
+Machine 121:
+  Diagram: [ ⬛ 🟨 🟨 🟨 🟨 🟨 ]
+  Best presses: 92
+  Presses per button: [19, 14, 6, 17, 17, 19]
+  Sample combo: [(3,5), (3,5), (3,5), (3,5), (3,5), ..., (87 hidden)]
+
+Machine 122:
+  Diagram: [ ⬛ 🟨 🟨 🟨 ⬛ 🟨 🟨 🟨 ]
+  Best presses: 107
+  Presses per button: [3, 6, 16, 20, 0, 14, 9, 26, 13]
+  Sample combo: [(2,4,5,6), (2,4,5,6), (2,4,5,6), (5,7), (5,7), ..., (102 hidden)]
+
+Machine 123:
+  Diagram: [ 🟨 ⬛ ⬛ ⬛ ⬛ ⬛ 🟨 🟨 🟨 ⬛ ]
+  Best presses: 116
+  Presses per button: [0, 13, 1, 8, 21, 1, 19, 11, 10, 0, 2, 19, 11]
+  Sample combo: [(0,2,4,5,7,8), (0,2,4,5,7,8), (0,2,4,5,7,8), (0,2,4,5,7,8), (0,2,4,5,7,8), ..., (111 hidden)]
+
+Machine 124:
+  Diagram: [ 🟨 ⬛ ⬛ 🟨 🟨 ⬛ 🟨 ⬛ ⬛ 🟨 ]
+  Best presses: 129
+  Presses per button: [0, 7, 25, 17, 8, 0, 6, 14, 12, 7, 13, 20]
+  Sample combo: [(5,7), (5,7), (5,7), (5,7), (5,7), ..., (124 hidden)]
+
+Machine 125:
+  Diagram: [ ⬛ ⬛ ⬛ 🟨 ⬛ ⬛ ⬛ 🟨 🟨 ⬛ ]
+  Best presses: 136
+  Presses per button: [9, 14, 2, 0, 25, 0, 1, 19, 7, 26, 25, 8]
+  Sample combo: [(2,4,8,9), (2,4,8,9), (2,4,8,9), (2,4,8,9), (2,4,8,9), ..., (131 hidden)]
+
+Machine 126:
+  Diagram: [ 🟨 🟨 ⬛ ⬛ ⬛ 🟨 ⬛ 🟨 ]
+  Best presses: 36
+  Presses per button: [10, 2, 1, 14, 3, 6]
+  Sample combo: [(2,6,7), (2,6,7), (2,6,7), (2,6,7), (2,6,7), ..., (31 hidden)]
+
+Machine 127:
+  Diagram: [ 🟨 🟨 ⬛ ⬛ ⬛ 🟨 🟨 ⬛ ]
+  Best presses: 96
+  Presses per button: [12, 0, 11, 11, 6, 17, 8, 15, 16]
+  Sample combo: [(3,6,7), (3,6,7), (3,6,7), (3,6,7), (3,6,7), ..., (91 hidden)]
+
+Machine 128:
+  Diagram: [ 🟨 ⬛ ⬛ 🟨 🟨 ]
+  Best presses: 166
+  Presses per button: [13, 152, 1]
+  Sample combo: [(1,3,4), (1,3,4), (1,3,4), (1,3,4), (1,3,4), ..., (161 hidden)]
+
+Machine 129:
+  Diagram: [ 🟨 ⬛ ⬛ ⬛ ]
+  Best presses: 177
+  Presses per button: [17, 12, 133, 15]
+  Sample combo: [(0), (0), (0), (0), (0), ..., (172 hidden)]
+
+Machine 130:
+  Diagram: [ ⬛ ⬛ 🟨 🟨 🟨 ⬛ ⬛ 🟨 🟨 ]
+  Best presses: 44
+  Presses per button: [3, 1, 7, 0, 3, 9, 3, 14, 3, 0, 1]
+  Sample combo: [(1,2,3,4), (1,2,3,4), (1,2,3,4), (5,6,7,8), (3,5,6), ..., (39 hidden)]
+
+Machine 131:
+  Diagram: [ 🟨 ⬛ 🟨 ⬛ 🟨 ⬛ 🟨 ⬛ 🟨 ]
+  Best presses: 62
+  Presses per button: [23, 8, 4, 6, 0, 4, 10, 7]
+  Sample combo: [(0,2,4,5,6), (0,2,4,5,6), (0,2,4,5,6), (0,2,4,5,6), (0,2,4,5,6), ..., (57 hidden)]
+
+Machine 132:
+  Diagram: [ 🟨 ⬛ ⬛ ⬛ 🟨 ⬛ 🟨 ⬛ 🟨 ⬛ ]
+  Best presses: 171
+  Presses per button: [6, 9, 0, 1, 15, 9, 15, 103, 13]
+  Sample combo: [(2,3,8), (2,3,8), (2,3,8), (2,3,8), (2,3,8), ..., (166 hidden)]
+
+Machine 133:
+  Diagram: [ ⬛ 🟨 ⬛ 🟨 ⬛ 🟨 🟨 ]
+  Best presses: 44
+  Presses per button: [14, 0, 12, 0, 0, 9, 8, 1, 0]
+  Sample combo: [(2,5), (2,5), (2,5), (2,5), (2,5), ..., (39 hidden)]
+
+Machine 134:
+  Diagram: [ ⬛ 🟨 🟨 ⬛ ⬛ 🟨 ⬛ ⬛ 🟨 ⬛ ]
+  Best presses: 257
+  Presses per button: [5, 12, 15, 19, 2, 1, 16, 8, 179]
+  Sample combo: [(1,5,8), (1,5,8), (1,5,8), (1,5,8), (1,5,8), ..., (252 hidden)]
+
+Machine 135:
+  Diagram: [ ⬛ 🟨 ⬛ ⬛ ⬛ ⬛ ⬛ 🟨 🟨 ]
+  Best presses: 109
+  Presses per button: [13, 11, 15, 18, 14, 0, 15, 17, 6]
+  Sample combo: [(1,2,5,8), (1,2,5,8), (1,2,5,8), (1,2,5,8), (1,2,5,8), ..., (104 hidden)]
+
+Machine 136:
+  Diagram: [ ⬛ ⬛ 🟨 ⬛ ⬛ ]
+  Best presses: 61
+  Presses per button: [1, 8, 19, 16, 10, 0, 7]
+  Sample combo: [(0), (0,2,4), (0,2,4), (0,2,4), (0,2,4), ..., (56 hidden)]
+
+Machine 137:
+  Diagram: [ 🟨 ⬛ 🟨 ⬛ ⬛ 🟨 🟨 🟨 ]
+  Best presses: 199
+  Presses per button: [11, 149, 3, 3, 14, 6, 0, 8, 5]
+  Sample combo: [(0,1,2,4,5,7), (0,1,2,4,5,7), (0,1,2,4,5,7), (0,1,2,4,5,7), (0,1,2,4,5,7), ..., (194 hidden)]
+
+Machine 138:
+  Diagram: [ 🟨 🟨 ⬛ 🟨 ]
+  Best presses: 190
+  Presses per button: [38, 127, 23, 0, 2, 0]
+  Sample combo: [(0,2), (0,2), (0,2), (0,2), (0,2), ..., (185 hidden)]
+
+Machine 139:
+  Diagram: [ ⬛ ⬛ ⬛ 🟨 ]
+  Best presses: 48
+  Presses per button: [13, 0, 15, 3, 17]
+  Sample combo: [(1,2,3), (1,2,3), (1,2,3), (1,2,3), (1,2,3), ..., (43 hidden)]
+
+Machine 140:
+  Diagram: [ 🟨 🟨 🟨 ⬛ ⬛ 🟨 🟨 ]
+  Best presses: 56
+  Presses per button: [2, 13, 8, 19, 14]
+  Sample combo: [(0,1,4,5), (0,1,4,5), (4,5), (4,5), (4,5), ..., (51 hidden)]
+
+Machine 141:
+  Diagram: [ ⬛ ⬛ ⬛ ⬛ 🟨 ]
+  Best presses: 14
+  Presses per button: [8, 1, 5]
+  Sample combo: [(0,1,2,4), (0,1,2,4), (0,1,2,4), (0,1,2,4), (0,1,2,4), ..., (9 hidden)]
+
+Machine 142:
+  Diagram: [ 🟨 🟨 ⬛ 🟨 ]
+  Best presses: 32
+  Presses per button: [18, 10, 0, 4]
+  Sample combo: [(0,1,2), (0,1,2), (0,1,2), (0,1,2), (0,1,2), ..., (27 hidden)]
+
+Machine 143:
+  Diagram: [ 🟨 🟨 🟨 🟨 🟨 ⬛ 🟨 🟨 ⬛ ]
+  Best presses: 74
+  Presses per button: [8, 5, 3, 1, 0, 16, 16, 4, 14, 7]
+  Sample combo: [(0,1,4,5,6,7,8), (0,1,4,5,6,7,8), (0,1,4,5,6,7,8), (0,1,4,5,6,7,8), (0,1,4,5,6,7,8), ..., (69 hidden)]
+
+Machine 144:
+  Diagram: [ ⬛ ⬛ ⬛ ⬛ 🟨 🟨 🟨 ]
+  Best presses: 82
+  Presses per button: [16, 15, 8, 15, 18, 10]
+  Sample combo: [(0,2,4,5), (0,2,4,5), (0,2,4,5), (0,2,4,5), (0,2,4,5), ..., (77 hidden)]
+
+Machine 145:
+  Diagram: [ 🟨 🟨 ⬛ 🟨 ]
+  Best presses: 32
+  Presses per button: [19, 10, 3]
+  Sample combo: [(0,2), (0,2), (0,2), (0,2), (0,2), ..., (27 hidden)]
+
+Machine 146:
+  Diagram: [ 🟨 🟨 ⬛ 🟨 🟨 🟨 ]
+  Best presses: 219
+  Presses per button: [15, 179, 15, 3, 7]
+  Sample combo: [(2,3,4), (2,3,4), (2,3,4), (2,3,4), (2,3,4), ..., (214 hidden)]
+
+Machine 147:
+  Diagram: [ 🟨 ⬛ 🟨 ⬛ 🟨 🟨 🟨 ⬛ 🟨 🟨 ]
+  Best presses: 281
+  Presses per button: [16, 182, 4, 21, 10, 2, 8, 7, 20, 11, 0]
+  Sample combo: [(0,1,8,9), (0,1,8,9), (0,1,8,9), (0,1,8,9), (0,1,8,9), ..., (276 hidden)]
+
+Machine 148:
+  Diagram: [ 🟨 🟨 🟨 🟨 ⬛ 🟨 ]
+  Best presses: 81
+  Presses per button: [0, 12, 13, 2, 20, 16, 18]
+  Sample combo: [(0,1,4), (0,1,4), (0,1,4), (0,1,4), (0,1,4), ..., (76 hidden)]
+
+Machine 149:
+  Diagram: [ 🟨 ⬛ ⬛ ⬛ ⬛ ⬛ ⬛ 🟨 🟨 ]
+  Best presses: 111
+  Presses per button: [1, 0, 12, 8, 3, 12, 11, 19, 14, 12, 19]
+  Sample combo: [(4,6), (0,1,2,3,4,5,7,8), (0,1,2,3,4,5,7,8), (0,1,2,3,4,5,7,8), (0,1,2,3,4,5,7,8), ..., (106 hidden)]
+
+Machine 150:
+  Diagram: [ ⬛ 🟨 🟨 🟨 ⬛ 🟨 ]
+  Best presses: 93
+  Presses per button: [0, 17, 15, 12, 22, 14, 13]
+  Sample combo: [(0,2,4), (0,2,4), (0,2,4), (0,2,4), (0,2,4), ..., (88 hidden)]
+
+Machine 151:
+  Diagram: [ 🟨 🟨 ⬛ 🟨 🟨 🟨 ]
+  Best presses: 76
+  Presses per button: [7, 10, 4, 9, 0, 26, 20]
+  Sample combo: [(0,2,4,5), (0,2,4,5), (0,2,4,5), (0,2,4,5), (0,2,4,5), ..., (71 hidden)]
+
+Machine 152:
+  Diagram: [ 🟨 ⬛ ⬛ 🟨 ]
+  Best presses: 9
+  Presses per button: [3, 6, 0]
+  Sample combo: [(0,2), (0,2), (0,2), (0,3), (0,3), ..., (4 hidden)]
+
+Machine 153:
+  Diagram: [ ⬛ ⬛ ⬛ ⬛ ⬛ ⬛ 🟨 🟨 ]
+  Best presses: 105
+  Presses per button: [21, 17, 10, 0, 16, 8, 19, 5, 9, 0]
+  Sample combo: [(2,7), (2,7), (2,7), (2,7), (2,7), ..., (100 hidden)]
+
+Machine 154:
+  Diagram: [ 🟨 🟨 🟨 🟨 ⬛ 🟨 ⬛ ]
+  Best presses: 152
+  Presses per button: [0, 0, 0, 10, 14, 0, 29, 80, 19]
+  Sample combo: [(2), (2), (2), (2), (2), ..., (147 hidden)]
+
+Machine 155:
+  Diagram: [ ⬛ 🟨 🟨 🟨 🟨 ⬛ 🟨 ]
+  Best presses: 63
+  Presses per button: [4, 16, 13, 5, 10, 4, 11]
+  Sample combo: [(4,5), (4,5), (4,5), (4,5), (0,1,3,6), ..., (58 hidden)]
+
+Machine 156:
+  Diagram: [ ⬛ 🟨 🟨 🟨 ⬛ 🟨 🟨 🟨 🟨 ]
+  Best presses: 120
+  Presses per button: [21, 29, 10, 1, 15, 12, 0, 14, 18, 0]
+  Sample combo: [(2,3,4,6), (2,3,4,6), (2,3,4,6), (2,3,4,6), (2,3,4,6), ..., (115 hidden)]
+
+Machine 157:
+  Diagram: [ 🟨 🟨 ⬛ 🟨 🟨 ]
+  Best presses: 43
+  Presses per button: [6, 13, 12, 9, 3]
+  Sample combo: [(0,4), (0,4), (0,4), (0,4), (0,4), ..., (38 hidden)]
+
+Machine 158:
+  Diagram: [ ⬛ 🟨 🟨 🟨 ⬛ ⬛ ⬛ ⬛ ⬛ ]
+  Best presses: 58
+  Presses per button: [19, 7, 7, 0, 6, 5, 14]
+  Sample combo: [(4,5), (4,5), (4,5), (4,5), (4,5), ..., (53 hidden)]
+
+Machine 159:
+  Diagram: [ ⬛ 🟨 ⬛ 🟨 ⬛ 🟨 ⬛ 🟨 ⬛ ]
+  Best presses: 238
+  Presses per button: [8, 10, 171, 19, 6, 0, 1, 16, 7]
+  Sample combo: [(0,2,4,5,6,7,8), (0,2,4,5,6,7,8), (0,2,4,5,6,7,8), (0,2,4,5,6,7,8), (0,2,4,5,6,7,8), ..., (233 hidden)]
+
+Machine 160:
+  Diagram: [ 🟨 🟨 ⬛ 🟨 🟨 🟨 ]
+  Best presses: 66
+  Presses per button: [5, 19, 20, 20, 2]
+  Sample combo: [(0,1), (0,1), (0,1), (0,1), (0,1), ..., (61 hidden)]
+
+Machine 161:
+  Diagram: [ 🟨 ⬛ 🟨 🟨 🟨 ⬛ 🟨 ]
+  Best presses: 277
+  Presses per button: [21, 5, 14, 13, 193, 0, 1, 12, 18]
+  Sample combo: [(1,2,4,6), (1,2,4,6), (1,2,4,6), (1,2,4,6), (1,2,4,6), ..., (272 hidden)]
+
+Machine 162:
+  Diagram: [ ⬛ 🟨 🟨 ⬛ ⬛ ]
+  Best presses: 65
+  Presses per button: [0, 20, 18, 14, 10, 3]
+  Sample combo: [(0,4), (0,4), (0,4), (0,4), (0,4), ..., (60 hidden)]
+
+Machine 163:
+  Diagram: [ 🟨 🟨 ⬛ ⬛ 🟨 ⬛ 🟨 ]
+  Best presses: 61
+  Presses per button: [3, 9, 9, 4, 14, 2, 20]
+  Sample combo: [(0,2,3,4,5), (0,2,3,4,5), (0,2,3,4,5), (2,3,4), (2,3,4), ..., (56 hidden)]
+
+Machine 164:
+  Diagram: [ 🟨 ⬛ 🟨 🟨 ⬛ ]
+  Best presses: 18
+  Presses per button: [16, 2, 0]
+  Sample combo: [(0,1,3,4), (0,1,3,4), (0,1,3,4), (0,1,3,4), (0,1,3,4), ..., (13 hidden)]
+
+Machine 165:
+  Diagram: [ ⬛ 🟨 ⬛ 🟨 🟨 ]
+  Best presses: 39
+  Presses per button: [7, 14, 10, 0, 8, 0]
+  Sample combo: [(2,4), (2,4), (2,4), (2,4), (2,4), ..., (34 hidden)]
+
+Solution 2: 16361
