@@ -12,11 +12,13 @@ async function timeSolution (label, fn) {
 }
 
 async function run () {
-  const test = (await read(fromHere('test.txt'), 'utf8')).trim()
+  const testP1 = (await read(fromHere('test-p1.txt'), 'utf8')).trim()
+  const testP2 = (await read(fromHere('test-p2.txt'), 'utf8')).trim()
   const input = (await read(fromHere('input.txt'), 'utf8')).trim()
 
-  await timeSolution('Part 1 (test)', () => solveForFirstStar(test))
+  await timeSolution('Part 1 (test)', () => solveForFirstStar(testP1))
   await timeSolution('Part 1', () => solveForFirstStar(input))
+  await timeSolution('Part 2 (test)', () => solveForSecondStar(testP2))
   await timeSolution('Part 2', () => solveForSecondStar(input))
 }
 
@@ -27,7 +29,9 @@ function parseDeviceMap (input) {
     const outputIds = rest.join('').trim().split(/\s+/)
     return {
       deviceName,
-      outputIds
+      outputIds,
+      outputs: [],
+      inputs: []
     }
   })
 
@@ -41,7 +45,8 @@ function parseDeviceMap (input) {
       deviceIndex[name] = {
         deviceName: name,
         outputIds: [],
-        outputs: []
+        outputs: [],
+        inputs: []
       }
       devices.push(deviceIndex[name])
     }
@@ -49,70 +54,121 @@ function parseDeviceMap (input) {
   }
 
   devices.forEach(device => {
-    device.outputs = device.outputIds.filter(Boolean).map(id => ensureDevice(id))
+    device.outputs = device.outputIds.filter(Boolean).map(id => {
+      const target = ensureDevice(id)
+      target.inputs.push(device)
+      return target
+    })
   })
 
-  return { devices, deviceIndex, findDevice: name => deviceIndex[name] }
+  const findDevice = name => ensureDevice(name)
+
+  return { devices, deviceIndex, findDevice }
 }
 
-function createPathFinder () {
-  const memo = new Map() // Memoization cache
-  const possiblePaths = [] // Store all found paths
+function createPathCounter ({ shouldTraverseDevice = null, endDevice, requiredDevices = [] }) {
+  const memo = new Map()
+  let expansions = 0
 
-  function findPaths (startDevice, endDevice, visited = new Set(), path = []) {
-    const currentDevice = startDevice
-    if (visited.has(currentDevice.deviceName)) {
-      return
+  const requiredDeviceBits = new Map()
+  requiredDevices.forEach((device, index) => {
+    requiredDeviceBits.set(device.deviceName, 1 << index)
+  })
+  const requiredMask = requiredDevices.length ? (1 << requiredDevices.length) - 1 : 0
+
+  function countPaths (device, visitedMask = 0, stack = new Set()) {
+    const bit = requiredDeviceBits.get(device.deviceName) || 0
+    const nextMask = visitedMask | bit
+    const memoKey = `${device.deviceName}:${nextMask}`
+    if (memo.has(memoKey)) {
+      return memo.get(memoKey)
     }
 
-    // Create a cache key based on current device and visited set
-    const visitedKey = Array.from(visited).sort().join(',')
-    const cacheKey = `${currentDevice.deviceName}:${visitedKey}`
-
-    if (memo.has(cacheKey)) {
-      // Use memoized results and append to current path
-      const cachedPathSuffixes = memo.get(cacheKey)
-      for (const suffix of cachedPathSuffixes) {
-        possiblePaths.push([...path, ...suffix])
-      }
-      return
+    if (stack.has(device.deviceName)) {
+      // Cycle detected - no simple paths continue through this branch
+      return { count: 0, longestPath: null }
     }
 
-    visited.add(currentDevice.deviceName)
-    path.push(currentDevice.deviceName)
-
-    const pathsFromHere = [] // Store paths found from this device for memoization
-
-    if (currentDevice === endDevice) {
-      const completePath = [...path]
-      possiblePaths.push(completePath)
-      pathsFromHere.push([currentDevice.deviceName]) // Just this device for the suffix
-    } else {
-      const beforeCount = possiblePaths.length
-      for (const outputDevice of currentDevice.outputs) {
-        findPaths(outputDevice, endDevice, visited, path)
-      }
-
-      // Extract the suffixes that were added from this point
-      const newPaths = possiblePaths.slice(beforeCount)
-      for (const newPath of newPaths) {
-        const suffixStartIndex = path.length - 1 // Start from current device
-        pathsFromHere.push(newPath.slice(suffixStartIndex))
-      }
+    if (shouldTraverseDevice && !shouldTraverseDevice(device)) {
+      return { count: 0, longestPath: null }
     }
 
-    // Memoize the path suffixes from this device
-    memo.set(cacheKey, pathsFromHere)
+    expansions++
 
-    path.pop()
-    visited.delete(currentDevice.deviceName)
+    if (device === endDevice) {
+      const isValid = requiredMask === 0 ? true : (nextMask === requiredMask)
+      const result = {
+        count: isValid ? 1 : 0,
+        longestPath: isValid ? [device.deviceName] : null
+      }
+      memo.set(memoKey, result)
+      return result
+    }
+
+    stack.add(device.deviceName)
+    let total = 0
+    let bestPath = null
+    for (const outputDevice of device.outputs) {
+      const childResult = countPaths(outputDevice, nextMask, stack)
+      total += childResult.count
+      if (childResult.longestPath) {
+        const candidatePath = [device.deviceName, ...childResult.longestPath]
+        if (!bestPath || candidatePath.length > bestPath.length) {
+          bestPath = candidatePath
+        }
+      }
+    }
+    stack.delete(device.deviceName)
+
+    const result = { count: total, longestPath: bestPath }
+    memo.set(memoKey, result)
+    return result
   }
 
-  return function (startDevice, endDevice) {
-    possiblePaths.length = 0 // Clear any previous results
-    findPaths(startDevice, endDevice)
-    return possiblePaths
+  return function (startDevice, options = {}) {
+    const startTime = Date.now()
+    expansions = 0
+    const totalPaths = countPaths(startDevice, 0, new Set())
+    const durationMs = Date.now() - startTime
+    report(`PathCounter expanded ${expansions.toLocaleString()} states in ${durationMs}ms`)
+    return totalPaths
   }
+}
+
+function computeDevicesThatReach (targetDevice) {
+  const reachable = new Set()
+  const stack = [targetDevice]
+
+  while (stack.length > 0) {
+    const device = stack.pop()
+    if (!device || reachable.has(device.deviceName)) {
+      continue
+    }
+    reachable.add(device.deviceName)
+    for (const inputDevice of device.inputs) {
+      stack.push(inputDevice)
+    }
+  }
+
+  return reachable
+}
+
+function computeDevicesReachableFrom (startDevice) {
+  const reachable = new Set()
+  const stack = [startDevice]
+
+  while (stack.length > 0) {
+    const device = stack.pop()
+    if (!device || reachable.has(device.deviceName)) {
+      continue
+    }
+    reachable.add(device.deviceName)
+    for (const outputDevice of device.outputs) {
+      stack.push(outputDevice)
+    }
+  }
+
+  return reachable
 }
 
 async function solveForFirstStar (input) {
@@ -131,17 +187,42 @@ async function solveForFirstStar (input) {
   const end = findDevice('out')
 
   // Find every path from you to out
-  const findPaths = createPathFinder()
-  const possiblePaths = findPaths(start, end)
+  const countPaths = createPathCounter({ endDevice: end })
+  const { count: pathCount, longestPath } = countPaths(start)
 
-  report(`Found ${possiblePaths.length} possible paths from 'you' to 'out'`)
+  report(`Found ${pathCount} possible paths from 'you' to 'out'`)
+  if (longestPath) {
+    report(`Longest path (${longestPath.length} nodes): ${longestPath.join(' -> ')}`)
+  }
 
-  const solution = possiblePaths.length
+  const solution = pathCount
   report('Solution 1:', solution)
 }
 
 async function solveForSecondStar (input) {
-  const solution = 'UNSOLVED'
+  const { findDevice } = parseDeviceMap(input)
+
+  const start = findDevice('svr')
+  const end = findDevice('out')
+  const devicesOnRoute = [findDevice('dac'), findDevice('fft')]
+
+  const reachableFromStart = computeDevicesReachableFrom(start)
+  const reachableToOut = computeDevicesThatReach(end)
+  const traverseFilter = device => reachableFromStart.has(device.deviceName) && reachableToOut.has(device.deviceName)
+
+  const countPaths = createPathCounter({
+    endDevice: end,
+    shouldTraverseDevice: traverseFilter,
+    requiredDevices: devicesOnRoute
+  })
+  const { count: validPathCount, longestPath } = countPaths(start)
+
+  report(`Found ${validPathCount} possible paths from 'svr' to 'out' via 'dac' and 'fft'`)
+  if (longestPath) {
+    report(`Longest valid path (${longestPath.length} nodes): ${longestPath.join(' -> ')}`)
+  }
+
+  const solution = validPathCount
   report('Solution 2:', solution)
 }
 
