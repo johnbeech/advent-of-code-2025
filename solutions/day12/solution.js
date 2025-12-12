@@ -978,7 +978,7 @@ async function run () {
       verbose: false,
       bruteExampleCount: 1,
       bruteExampleMaxShapes: 15,
-      forceBruteRegionIds: [994]
+      forceBruteRegionIds: []
     })
   )
   await timeSolution('Part 2', () => solveForSecondStar(input))
